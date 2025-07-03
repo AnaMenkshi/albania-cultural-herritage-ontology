@@ -1,0 +1,2785 @@
+@prefix : <http://www.semanticweb.org/ana/ontologies/2025/4/albania/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/ana/ontologies/2025/4/albania/> .
+
+<http://www.semanticweb.org/ana/ontologies/2025/4/albania> rdf:type owl:Ontology .
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/associatedWithEvent
+:associatedWithEvent rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf owl:topObjectProperty ;
+                     rdfs:domain :CultureEntity ;
+                     rdfs:range :HistoricEvent .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/collaboratedWith
+:collaboratedWith rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdf:type owl:SymmetricProperty ;
+                  rdfs:domain :ImportantPerson ;
+                  rdfs:range :ImportantPerson .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/commemorates
+:commemorates rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain :Museum ;
+              rdfs:range :ImportantPerson .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/containsMonument
+:containsMonument rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdfs:domain :UNESCOSite ;
+                  rdfs:range [ rdf:type owl:Class ;
+                               owl:unionOf ( :Monument
+                                             :Museum
+                                             :ReligiousAndCulturalComplex
+                                           )
+                             ] .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/datedFrom
+:datedFrom rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:domain :ArchaeologicalSite ;
+           rdfs:range :TimePeriod .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/displays
+:displays rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          owl:inverseOf :exhibitedIn ;
+          rdfs:domain :Museum ;
+          rdfs:range :Artefact .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/exhibitedIn
+:exhibitedIn rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :Artefact ;
+             rdfs:range :Museum .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/featuresBuilding
+:featuresBuilding rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdfs:domain :UNESCOSite ;
+                  rdfs:range [ rdf:type owl:Class ;
+                               owl:unionOf ( :CastleOrFortress
+                                             :Museum
+                                             :ReligiousAndCulturalComplex
+                                           )
+                             ] .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/hasCity
+:hasCity rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :locatedIn ;
+         rdfs:domain :CultureEntity ;
+         rdfs:range :City .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/hasHistoricalPeriod
+:hasHistoricalPeriod rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf owl:topObjectProperty ;
+                     rdfs:domain :Location ;
+                     rdfs:range :TimePeriod .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/hasLocation
+:hasLocation rdf:type owl:ObjectProperty ;
+             owl:equivalentProperty :locatedIn ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :CultureEntity ;
+             rdfs:range :Location .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/isPartOf
+:isPartOf rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdf:type owl:AsymmetricProperty ,
+                   owl:IrreflexiveProperty ;
+          rdfs:domain :CultureEntity ;
+          rdfs:range :UNESCOSite .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/locatedIn
+:locatedIn rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:domain :CultureEntity ;
+           rdfs:range :Location .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/occurredIn
+:occurredIn rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain :HistoricEvent ;
+            rdfs:range :Location .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/occurredOn
+:occurredOn rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain :HistoricEvent ;
+            rdfs:range :TimePeriod .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/originatedFrom
+:originatedFrom rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain [ rdf:type owl:Class ;
+                              owl:unionOf ( :ArchaeologicalSite
+                                            :Artefact
+                                            :TraditionalPractice
+                                          )
+                            ] ;
+                rdfs:range :TimePeriod .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/originatesFrom
+:originatesFrom rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain :TraditionalPractice ;
+                rdfs:range :Location .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/participatedIn
+:participatedIn rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain :ImportantPerson ;
+                rdfs:range :HistoricEvent .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/surroundsSite
+:surroundsSite rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:domain :Location ;
+               rdfs:range :ArchaeologicalSite .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/hasArchitecturalStyle
+:hasArchitecturalStyle rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf owl:topDataProperty ;
+                       rdfs:domain [ rdf:type owl:Class ;
+                                     owl:unionOf ( :Museum
+                                                   :ReligiousAndCulturalComplex
+                                                 )
+                                   ] ;
+                       rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/hasConstructionDate
+:hasConstructionDate rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf owl:topDataProperty ;
+                     rdfs:domain [ rdf:type owl:Class ;
+                                   owl:unionOf ( :Monument
+                                                 :ReligiousAndCulturalComplex
+                                               )
+                                 ] ;
+                     rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/hasCreator
+:hasCreator rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdf:type owl:FunctionalProperty ;
+            rdfs:domain :CultureEntity ;
+            rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/hasCulturalContext
+:hasCulturalContext rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:domain :CultureEntity ;
+                    rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/hasCulturalHeritageStatus
+:hasCulturalHeritageStatus rdf:type owl:DatatypeProperty ;
+                           rdfs:subPropertyOf owl:topDataProperty ;
+                           rdfs:domain :CultureEntity ;
+                           rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/hasCulturalSignificance
+:hasCulturalSignificance rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf owl:topDataProperty ;
+                         rdfs:domain :CultureEntity ;
+                         rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/hasDateOfDiscovery
+:hasDateOfDiscovery rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:domain [ rdf:type owl:Class ;
+                                  owl:unionOf ( :ArchaeologicalSite
+                                                :Artefact
+                                              )
+                                ] ;
+                    rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/hasEventDuration
+:hasEventDuration rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:domain :HistoricEvent ;
+                  rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/hasExactDate
+:hasExactDate rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain [ rdf:type owl:Class ;
+                            owl:unionOf ( :HistoricEvent
+                                          :TimePeriod
+                                        )
+                          ] ;
+              rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/hasLanguage
+:hasLanguage rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Manuscript ;
+             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/hasLocationType
+:hasLocationType rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdfs:domain :Location ;
+                 rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/hasMaterial
+:hasMaterial rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( :Artefact
+                                         :Monument
+                                       )
+                         ] ;
+             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/hasName
+:hasName rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:domain [ rdf:type owl:Class ;
+                       owl:unionOf ( :CultureEntity
+                                     :HistoricEvent
+                                     :ImportantPerson
+                                     :Location
+                                     :UNESCOSite
+                                   )
+                     ] ;
+         rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/hasPeriodOfUse
+:hasPeriodOfUse rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :Artefact ;
+                rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/hasReligion
+:hasReligion rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :ReligiousAndCulturalComplex ;
+             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/hasRestorationDate
+:hasRestorationDate rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:domain [ rdf:type owl:Class ;
+                                  owl:unionOf ( :Artefact
+                                                :Monument
+                                                :ReligiousAndCulturalComplex
+                                              )
+                                ] ;
+                    rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/hasStartDate
+:hasStartDate rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :HistoricEvent ;
+              rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/hasUNESCODesignation
+:hasUNESCODesignation rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf owl:topDataProperty ;
+                      rdfs:domain :UNESCOSite ;
+                      rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/hasWebsite
+:hasWebsite rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdf:type owl:FunctionalProperty ;
+            rdfs:domain :Museum ;
+            rdfs:range xsd:anyURI .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/AncientCity
+:AncientCity rdf:type owl:Class ;
+             rdfs:subClassOf :ArchaeologicalSite .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ArchaeologicalSite
+:ArchaeologicalSite rdf:type owl:Class ;
+                    owl:equivalentClass [ rdf:type owl:Class ;
+                                          owl:unionOf ( :AncientCity
+                                                        :CastleOrFortress
+                                                        :RockArtOrInscription
+                                                        :TombOrBurialMound
+                                                      )
+                                        ] ;
+                    rdfs:subClassOf :CultureEntity ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :datedFrom ;
+                                      owl:someValuesFrom :TimePeriod
+                                    ] ;
+                    owl:disjointUnionOf ( :AncientCity
+                                          :CastleOrFortress
+                                          :RockArtOrInscription
+                                          :TombOrBurialMound
+                                        ) .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ArchaeologyMuseum
+:ArchaeologyMuseum rdf:type owl:Class ;
+                   rdfs:subClassOf :Museum .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ArchitecturalMonument
+:ArchitecturalMonument rdf:type owl:Class ;
+                       rdfs:subClassOf :Monument .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ArtMuseum
+:ArtMuseum rdf:type owl:Class ;
+           rdfs:subClassOf :Museum .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Artefact
+:Artefact rdf:type owl:Class ;
+          rdfs:subClassOf :CultureEntity ;
+          owl:disjointUnionOf ( :Jewelry
+                                :Manuscript
+                                :Pottery
+                                :VisualArtwork
+                                :Weapon
+                              ) .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/CastleOrFortress
+:CastleOrFortress rdf:type owl:Class ;
+                  rdfs:subClassOf :ArchaeologicalSite .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/CatholicChurch
+:CatholicChurch rdf:type owl:Class ;
+                rdfs:subClassOf :ReligiousAndCulturalComplex .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/City
+:City rdf:type owl:Class ;
+      rdfs:subClassOf :Region .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/CulturalFestival
+:CulturalFestival rdf:type owl:Class ;
+                  rdfs:subClassOf :TraditionalPractice .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/CulturalMuseum
+:CulturalMuseum rdf:type owl:Class ;
+                rdfs:subClassOf :Museum .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/CultureEntity
+:CultureEntity rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/FolkDance
+:FolkDance rdf:type owl:Class ;
+           rdfs:subClassOf :TraditionalPractice .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/FolkMusic
+:FolkMusic rdf:type owl:Class ;
+           rdfs:subClassOf :TraditionalPractice .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/HistoricEvent
+:HistoricEvent rdf:type owl:Class ;
+               rdfs:subClassOf owl:Thing ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :occurredIn ;
+                                 owl:someValuesFrom :Location
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :occurredOn ;
+                                 owl:someValuesFrom :TimePeriod
+                               ] .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/HistoricalMuseum
+:HistoricalMuseum rdf:type owl:Class ;
+                  rdfs:subClassOf :Museum .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ImportantPerson
+:ImportantPerson rdf:type owl:Class ;
+                 rdfs:subClassOf owl:Thing .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Jewelry
+:Jewelry rdf:type owl:Class ;
+         rdfs:subClassOf :Artefact .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Location
+:Location rdf:type owl:Class ;
+          rdfs:subClassOf owl:Thing .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Manuscript
+:Manuscript rdf:type owl:Class ;
+            rdfs:subClassOf :Artefact .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Memorial
+:Memorial rdf:type owl:Class ;
+          rdfs:subClassOf :Monument .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Monastery
+:Monastery rdf:type owl:Class ;
+           rdfs:subClassOf :ReligiousAndCulturalComplex .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Monument
+:Monument rdf:type owl:Class ;
+          rdfs:subClassOf :CultureEntity ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :commemorates ;
+                            owl:allValuesFrom :ImportantPerson
+                          ] .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Mosque
+:Mosque rdf:type owl:Class ;
+        rdfs:subClassOf :ReligiousAndCulturalComplex .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Museum
+:Museum rdf:type owl:Class ;
+        rdfs:subClassOf :CultureEntity ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :displays ;
+                          owl:someValuesFrom :Artefact
+                        ] .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/OrthodoxChurch
+:OrthodoxChurch rdf:type owl:Class ;
+                rdfs:subClassOf :ReligiousAndCulturalComplex .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/PilgrimageSite
+:PilgrimageSite rdf:type owl:Class ;
+                rdfs:subClassOf :ReligiousAndCulturalComplex .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Pottery
+:Pottery rdf:type owl:Class ;
+         rdfs:subClassOf :Artefact .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Region
+:Region rdf:type owl:Class ;
+        rdfs:subClassOf :Location .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ReligiousAndCulturalComplex
+:ReligiousAndCulturalComplex rdf:type owl:Class ;
+                             owl:equivalentClass [ rdf:type owl:Class ;
+                                                   owl:unionOf ( :CatholicChurch
+                                                                 :Monastery
+                                                                 :Mosque
+                                                                 :OrthodoxChurch
+                                                                 :PilgrimageSite
+                                                               )
+                                                 ] ;
+                             rdfs:subClassOf :CultureEntity ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :hasLocation ;
+                                               owl:someValuesFrom :Location
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :hasLocation ;
+                                               owl:allValuesFrom :Location
+                                             ] ;
+                             owl:disjointUnionOf ( :CatholicChurch
+                                                   :Monastery
+                                                   :Mosque
+                                                   :OrthodoxChurch
+                                                   :PilgrimageSite
+                                                 ) .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/RockArtOrInscription
+:RockArtOrInscription rdf:type owl:Class ;
+                      rdfs:subClassOf :ArchaeologicalSite .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Statue
+:Statue rdf:type owl:Class ;
+        rdfs:subClassOf :Monument .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ThematicMuseum
+:ThematicMuseum rdf:type owl:Class ;
+                rdfs:subClassOf :Museum .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/TimePeriod
+:TimePeriod rdf:type owl:Class ;
+            rdfs:subClassOf owl:Thing .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/TombOrBurialMound
+:TombOrBurialMound rdf:type owl:Class ;
+                   rdfs:subClassOf :ArchaeologicalSite .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/TraditionalPractice
+:TraditionalPractice rdf:type owl:Class ;
+                     rdfs:subClassOf :CultureEntity ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :originatesFrom ;
+                                       owl:someValuesFrom :Location
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :originatesFrom ;
+                                       owl:allValuesFrom :Location
+                                     ] .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/UNESCOSite
+:UNESCOSite rdf:type owl:Class ;
+            rdfs:subClassOf owl:Thing ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty [ owl:inverseOf :isPartOf
+                                             ] ;
+                              owl:someValuesFrom :CultureEntity
+                            ] .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/VisualArtwork
+:VisualArtwork rdf:type owl:Class ;
+               rdfs:subClassOf :Artefact .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Weapon
+:Weapon rdf:type owl:Class ;
+        rdfs:subClassOf :Artefact .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania#AlbaniaRegion
+:AlbaniaRegion rdf:type owl:NamedIndividual ,
+                        :Region ;
+               :hasLocationType "Region" ;
+               :hasName "Albania" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania#Date_10thCenturyBC
+:Date_10thCenturyBC rdf:type owl:NamedIndividual ,
+                             :TimePeriod ;
+                    rdfs:label "10th Century BC"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania#Date_1443
+:Date_1443 rdf:type owl:NamedIndividual ,
+                    :TimePeriod ;
+           rdfs:label "1443"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania#Date_1878
+:Date_1878 rdf:type owl:NamedIndividual ,
+                    :TimePeriod ;
+           rdfs:label "1878"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania#Date_1908
+:Date_1908 rdf:type owl:NamedIndividual ,
+                    :TimePeriod ;
+           rdfs:label "1908"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania#Date_1912
+:Date_1912 rdf:type owl:NamedIndividual ,
+                    :TimePeriod ;
+           rdfs:label "1912"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania#Date_1939
+:Date_1939 rdf:type owl:NamedIndividual ,
+                    :TimePeriod ;
+           rdfs:label "1939"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania#Date_1943
+:Date_1943 rdf:type owl:NamedIndividual ,
+                    :TimePeriod ;
+           rdfs:label "1943"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania#DibraRegion
+:DibraRegion rdf:type owl:NamedIndividual ,
+                      :Region ;
+             :hasLocationType "Region" ;
+             :hasName "Dibra Region" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania#GjergjKastriotiSkanderbeg
+:GjergjKastriotiSkanderbeg rdf:type owl:NamedIndividual ,
+                                    :ImportantPerson ;
+                           owl:sameAs :Skanderbeg ;
+                           :collaboratedWith :LekDukagjini ;
+                           :participatedIn :SkanderbegResistance ;
+                           :hasName "Gjergj Kastrioti Skenderbeu" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Skanderbeg
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania#IllyriaRegion
+:IllyriaRegion rdf:type owl:NamedIndividual ,
+                        :Region ;
+               :hasLocationType "Region" ;
+               :hasName "Illyria" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania#LekDukagjini
+:LekDukagjini rdf:type owl:NamedIndividual ,
+                       :ImportantPerson ;
+              :collaboratedWith :GjergjKastriotiSkanderbeg ,
+                                :Skanderbeg ;
+              :participatedIn :AlbanianResistanceAgainstOttomanEmpire ;
+              :hasName "Leke Dukagjini" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania#Prizren
+:Prizren rdf:type owl:NamedIndividual ,
+                  :City ;
+         :hasLocationType "City" ;
+         :hasName "Prizren" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania#1st_century_BC
+<http://www.semanticweb.org/ana/ontologies/2025/4/albania#1st_century_BC> rdf:type owl:NamedIndividual ,
+                                                                                   :TimePeriod ;
+                                                                          rdfs:label "1st century BC"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania#27thPartisanBrigadeMemorial
+<http://www.semanticweb.org/ana/ontologies/2025/4/albania#27thPartisanBrigadeMemorial> rdf:type owl:NamedIndividual ,
+                                                                                                :Memorial ;
+                                                                                       :associatedWithEvent :WorldWarIIResistance ;
+                                                                                       :hasCity :Shkoder ;
+                                                                                       :hasLocation :Shkoder ;
+                                                                                       :locatedIn :Shkoder ;
+                                                                                       :hasConstructionDate "1970-07-04T00:00:00"^^xsd:dateTime ;
+                                                                                       :hasCulturalContext "commemoration of the 27th partisan brigade formed during WWII" ;
+                                                                                       :hasCulturalHeritageStatus "national cultural monument" ;
+                                                                                       :hasCulturalSignificance "marks the formation of a key partisan brigade in Shkoder" ;
+                                                                                       :hasMaterial "reinforced concrete" ;
+                                                                                       :hasName "27th Partisan Brigade Memorial" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/AbbasAliTurbe
+:AbbasAliTurbe rdf:type owl:NamedIndividual ,
+                        :PilgrimageSite ;
+               :hasLocation :Berat ;
+               :locatedIn :Berat ;
+               :hasConstructionDate "1620-06-07T00:00:00"^^xsd:dateTime ;
+               :hasCulturalContext "Bektashi Sufi shrine" ;
+               :hasCulturalHeritageStatus "Cultural Heritage of Albania" ;
+               :hasCulturalSignificance "Major Bektashi pilgrimage site; associated with annual rituals on Mount Tomorr" ;
+               :hasName "Abbas Ali Türbe" ;
+               :hasReligion "Bektashi Islam" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/AlbanianDeclarationOfIndependence
+:AlbanianDeclarationOfIndependence rdf:type owl:NamedIndividual ,
+                                            :HistoricEvent ;
+                                   :occurredIn :Vlora ;
+                                   :occurredOn :Date_1912 ;
+                                   :hasEventDuration "1 day" ;
+                                   :hasExactDate "1912-11-28T00:00:00"^^xsd:dateTime ;
+                                   :hasName "Declaration of Albanian Independence" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/AlbanianLanguageEducation
+:AlbanianLanguageEducation rdf:type owl:NamedIndividual ,
+                                    :HistoricEvent ;
+                           :occurredIn :Elbasan ;
+                           :occurredOn :Date_1908 ;
+                           :hasEventDuration "1908–1945" ;
+                           :hasName "Development of Albanian Language in Education" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/AlbanianMonarchy
+:AlbanianMonarchy rdf:type owl:NamedIndividual ,
+                           :HistoricEvent ;
+                  :occurredIn :Tirana ;
+                  :occurredOn :Date_1929 ;
+                  :hasEventDuration "1929–1939" ;
+                  :hasName "Establishment of Albanian Monarchy" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/AlbanianNationalMovement
+:AlbanianNationalMovement rdf:type owl:NamedIndividual ,
+                                   :HistoricEvent ;
+                          :occurredIn :Prizren ;
+                          :occurredOn :Date_1878 ;
+                          :hasEventDuration "1870s–1912" ;
+                          :hasName "Albanian National Awakening Movement" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/AlbanianResistanceAgainstOttomanEmpire
+:AlbanianResistanceAgainstOttomanEmpire rdf:type owl:NamedIndividual ,
+                                                 :HistoricEvent ;
+                                        owl:differentFrom :AlbanianRevoltsAgainstOttoman ;
+                                        :occurredIn :Kruje ;
+                                        :occurredOn :Date_15thCentury ;
+                                        :hasEventDuration "15th–19th centuries" ;
+                                        :hasName "Albanian Resistance against Ottoman Empire" ;
+                                        :hasStartDate "1443" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/AlbanianRevoltsAgainstOttoman
+:AlbanianRevoltsAgainstOttoman rdf:type owl:NamedIndividual ,
+                                        :HistoricEvent ;
+                               :occurredIn :DibraRegion ;
+                               :occurredOn :Date_19thCentury ;
+                               :hasEventDuration "1830–1912" ;
+                               :hasName "Albanian Revolts against the Ottoman Empire" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/AliPashaStatueTepelene
+:AliPashaStatueTepelene rdf:type owl:NamedIndividual ,
+                                 :Statue ;
+                        :associatedWithEvent :AlbanianResistanceAgainstOttomanEmpire ;
+                        :hasLocation :Tepelene ;
+                        :locatedIn :Tepelene ;
+                        :hasConstructionDate "2002-09-21T00:00:00"^^xsd:dateTime ;
+                        :hasCulturalContext "commemoration of Ali Pasha of Tepelena" ;
+                        :hasCulturalHeritageStatus "national cultural monument" ;
+                        :hasCulturalSignificance "symbolizes the legacy of a prominent Ottoman Albanian ruler" ;
+                        :hasMaterial "bronze" ;
+                        :hasName "Ali Pasha Tepelena Statue" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/AmantiaAncientCity
+:AmantiaAncientCity rdf:type owl:NamedIndividual ,
+                             :AncientCity ;
+                    :associatedWithEvent :IllyrianHellenization ;
+                    :hasLocation :VloraRegion ;
+                    :locatedIn :VloraRegion ;
+                    :originatedFrom :Date_5thCenturyBC ;
+                    :hasCreator "Illyrians" ;
+                    :hasCulturalContext "Illyrian fortified city with Hellenistic influence" ;
+                    :hasCulturalHeritageStatus "Protected National Monument" ;
+                    :hasCulturalSignificance "Religious and political center of southern Illyria" ;
+                    :hasDateOfDiscovery "1955" ;
+                    :hasName "Amantia" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ApolloniaAncientCity
+:ApolloniaAncientCity rdf:type owl:NamedIndividual ,
+                               :AncientCity ;
+                      :associatedWithEvent :RomanConquest ,
+                                           :RomanExpansionIntollyria ;
+                      :hasLocation :FierReigon ;
+                      :isPartOf :ApolloniaUNESCOSite ;
+                      :locatedIn :FierReigon ;
+                      :hasCreator "Greek colonists from Corinth and Corfu" ;
+                      :hasCulturalContext "Greek colonial city in Illyria" ;
+                      :hasCulturalHeritageStatus "UNESCO Tentative List" ;
+                      :hasCulturalSignificance "Commercial and cultural hub during Hellenistic and Roman periods" ;
+                      :hasDateOfDiscovery "1806" ;
+                      :hasName "Apollonia" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ApolloniaGoldEarrings
+:ApolloniaGoldEarrings rdf:type owl:NamedIndividual ,
+                                :Jewelry ;
+                       :exhibitedIn :NationalHistoryMuseumTirana ;
+                       :originatedFrom :Date_HellenisticPeriod ;
+                       :hasCreator "Gold Earrings from Apollonia" ;
+                       :hasCulturalContext "jewlery used in ancient times" ;
+                       :hasCulturalSignificance "Reflects Hellenistic artistic influence in Illyrian territories" ;
+                       :hasDateOfDiscovery "1961-06-03" ;
+                       :hasMaterial "gold" ;
+                       :hasPeriodOfUse "3rd–2nd century BC" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ApolloniaRuins
+:ApolloniaRuins rdf:type owl:NamedIndividual ,
+                         :ArchitecturalMonument ;
+                :hasLocation :FierReigon ;
+                :locatedIn :FierReigon ;
+                :hasCulturalHeritageStatus "protected archaeological site" ;
+                :hasMaterial "stone" ;
+                :hasName "Apollonia Ruins" ;
+                :hasRestorationDate "2015-09-10T00:00:00"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ApolloniaUNESCOSite
+:ApolloniaUNESCOSite rdf:type owl:NamedIndividual ,
+                              :UNESCOSite ;
+                     :containsMonument :ApolloniaRuins ;
+                     :featuresBuilding :ChurchOfSaintMaryApollonia ;
+                     :hasName "Apollonia Archaeological Park" ;
+                     :hasUNESCODesignation "Tentative List – Cultural Heritage" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ArchaeologicalMuseumKorce
+:ArchaeologicalMuseumKorce rdf:type owl:NamedIndividual ,
+                                    :ArchaeologyMuseum ;
+                           :displays :MotherGoddessVesselKamnik ;
+                           :hasLocation :Korce ;
+                           :locatedIn :Korce ;
+                           :hasArchitecturalStyle "Modern institutional architecture with local influences" ;
+                           :hasConstructionDate "1985-09-28T00:00:00"^^xsd:dateTime ;
+                           :hasCulturalContext "Prehistoric and early Illyrian cultures of southeastern Albania" ;
+                           :hasCulturalHeritageStatus "Cultural Institution of National Importance" ;
+                           :hasCulturalSignificance "Houses one of the richest collections of prehistoric artifacts in Albania, providing crucial insight into early Balkan civilizations" ;
+                           :hasName "Archaeological Museum of Korce" ;
+                           :hasWebsite "https://whichmuseum.com/museum/archaeological-musem-korce-24516"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ArdenicaMonastery
+:ArdenicaMonastery rdf:type owl:NamedIndividual ,
+                            :Monastery ;
+                   :hasCity :Fier ;
+                   :hasLocation :Fier ;
+                   :locatedIn :Fier ;
+                   :hasArchitecturalStyle "Byzantine with Romanesque features" ;
+                   :hasConstructionDate "1282-03-01T00:00:00"^^xsd:dateTime ;
+                   :hasCulturalContext "Byzantine and Romanesque monastic architecture" ;
+                   :hasCulturalHeritageStatus "Cultural Heritage of Albania" ;
+                   :hasCulturalSignificance "Site of Skanderbeg's marriage; renowned for 18th-century frescoes and iconostasis" ;
+                   :hasName "Monastery of the Nativity of the Theotokos in Ardenica" ;
+                   :hasReligion "Eastern Orthodox" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/AscensionElijahProphetIcon
+:AscensionElijahProphetIcon rdf:type owl:NamedIndividual ,
+                                     :VisualArtwork ;
+                            :exhibitedIn :OnufriIconographicMuseum ;
+                            :hasLocation :Berat ;
+                            :isPartOf :BeratUNESCOSite ;
+                            :locatedIn :Berat ;
+                            :originatedFrom :Date_1929 ;
+                            :hasCreator "Agathangjel Mbrica" ;
+                            :hasCulturalContext "20-th century Albanian religious art" ;
+                            :hasCulturalHeritageStatus "museum-preserved religious artwork" ;
+                            :hasCulturalSignificance "religious icon from a silversmith’s collection" ;
+                            :hasDateOfDiscovery "1929" ;
+                            :hasMaterial "wood and tempera" ;
+                            :hasName "Ascension of Elijah Prophet" ;
+                            :hasPeriodOfUse "1929" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/BaptisteryButrint
+:BaptisteryButrint rdf:type owl:NamedIndividual ,
+                            :ArchitecturalMonument ;
+                   :hasLocation :SarandaRegion ;
+                   :isPartOf :ButrintUNESCOSite ;
+                   :locatedIn :SarandaRegion ;
+                   :hasCulturalContext "early Christian religious architecture" ;
+                   :hasCulturalHeritageStatus "UNESCO World Heritage Site" ;
+                   :hasCulturalSignificance "one of the most important baptisteries in the Mediterranean" ;
+                   :hasMaterial "marble and brick" ;
+                   :hasName "Baptistery of Butrint" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/BashtoveCastle
+:BashtoveCastle rdf:type owl:NamedIndividual ,
+                         :CastleOrFortress ;
+                :associatedWithEvent :VenetianTradeExpansion ;
+                :hasLocation :TiranaRegion ;
+                :isPartOf :BashtoveUNESCOTentativeSite ;
+                :locatedIn :TiranaRegion ;
+                :originatedFrom :Date_15thCentury ;
+                :hasCreator "Venetians" ;
+                :hasCulturalHeritageStatus "UNESCO Tentative List" ;
+                :hasCulturalSignificance "Trade and defense along the Shkumbin River" ,
+                                         "Venetian period" ;
+                :hasDateOfDiscovery "15-th century" ;
+                :hasName "Bashtove Castle" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/BashtoveUNESCOTentativeSite
+:BashtoveUNESCOTentativeSite rdf:type owl:NamedIndividual ,
+                                      :UNESCOSite ;
+                             :featuresBuilding :BashtoveCastle ;
+                             :hasName "Venetian Triangular Castle of Bashtove" ;
+                             :hasUNESCODesignation "Tentative List – Cultural" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/BasilicaButrint
+:BasilicaButrint rdf:type owl:NamedIndividual ,
+                          :ArchitecturalMonument ;
+                 :hasLocation :SarandaRegion ;
+                 :isPartOf :ButrintUNESCOSite ;
+                 :locatedIn :SarandaRegion ;
+                 :hasCulturalContext "early Christian architecture" ;
+                 :hasCulturalHeritageStatus "UNESCO World Heritage Site" ;
+                 :hasCulturalSignificance "religious monument reflecting early Christian communities" ;
+                 :hasMaterial "stone" ;
+                 :hasName "Basilica of Butrint" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Berat
+:Berat rdf:type owl:NamedIndividual ,
+                :City ;
+       :hasHistoricalPeriod :ByzantinePeriod ;
+       :hasLocationType "City" ;
+       :hasName "Berat" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/BeratCastle
+:BeratCastle rdf:type owl:NamedIndividual ,
+                      :CastleOrFortress ;
+             :associatedWithEvent :ByzantineDefense ;
+             :hasLocation :BeratRegion ;
+             :isPartOf :BeratUNESCOSite ;
+             :locatedIn :BeratRegion ;
+             :hasCreator "Illyrians" ;
+             :hasCulturalContext "Castle of Illyrian, Byzantine, and Ottoman periods" ;
+             :hasCulturalHeritageStatus "Part of UNESCO World Heritage Site" ;
+             :hasCulturalSignificance "Historical center with continuous habitation" ;
+             :hasDateOfDiscovery "4th century BC" ;
+             :hasName "Berat Castle" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/BeratClockTower
+:BeratClockTower rdf:type owl:NamedIndividual ,
+                          :Memorial ;
+                 :hasLocation :Berat ;
+                 :locatedIn :Berat ;
+                 :hasCulturalContext "Ottoman-era civic architecture" ;
+                 :hasCulturalHeritageStatus "Cultural Monument of Albania" ;
+                 :hasCulturalSignificance "symbol of Berat's historical heritage" ;
+                 :hasMaterial "stone" ;
+                 :hasName "Clock Tower of Berat" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/BeratEthnographicMuseum
+:BeratEthnographicMuseum rdf:type owl:NamedIndividual ,
+                                  :CulturalMuseum ;
+                         :hasLocation :Berat ;
+                         :locatedIn :Berat ;
+                         :hasArchitecturalStyle "Ottoman-era architecture" ;
+                         :hasCulturalContext "Traditional Albanian lifestyle and crafts" ;
+                         :hasCulturalHeritageStatus "National Museum of Albania" ;
+                         :hasCulturalSignificance "Showcases the rich traditions and culture of the Berat area" ;
+                         :hasName "Ethnographic Museum of Berat" ;
+                         :hasWebsite "https://muzeumet-berat.al/en/ethnographic-museum/"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/BeratRegion
+:BeratRegion rdf:type owl:NamedIndividual ,
+                      :Region ;
+             :hasLocationType "Region" ;
+             :hasName "Berat Region" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/BeratUNESCOSite
+:BeratUNESCOSite rdf:type owl:NamedIndividual ,
+                          :UNESCOSite ;
+                 :containsMonument :BeratCastle ,
+                                   :OnufriIconographicMuseum ;
+                 :featuresBuilding :ChurchOfSaintMaryBerat ,
+                                   :ChurchOfTheHolyTrinityBerat ;
+                 :hasName "Historic Centres of Berat and Gjirokastra" ;
+                 :hasUNESCODesignation "World Heritage Site – Cultural" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/BlaziCavePaintings
+:BlaziCavePaintings rdf:type owl:NamedIndividual ,
+                             :RockArtOrInscription ;
+                    :hasLocation :MatRegion ;
+                    :locatedIn :MatRegion ;
+                    :originatedFrom :Date_18000BP ;
+                    :hasCreator "Epigravettian hunter-gatherers" ;
+                    :hasCulturalContext "Late Upper Paleolithic symbolic expression" ;
+                    :hasCulturalHeritageStatus "National Archaeological Heritage" ;
+                    :hasCulturalSignificance "Earliest known prehistoric art in Albania" ;
+                    :hasDateOfDiscovery "1979" ;
+                    :hasName "Blazi Cave Epigravettian Rock Art" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ButrintAncientCity
+:ButrintAncientCity rdf:type owl:NamedIndividual ,
+                             :AncientCity ;
+                    :associatedWithEvent :RomanProvinceFormation ;
+                    :hasLocation :SarandaRegion ;
+                    :isPartOf :ButrintUNESCOSite ;
+                    :locatedIn :SarandaRegion ;
+                    :originatedFrom :Date_HellenisticPeriod ;
+                    :hasCreator "Greek settlers from Corfu" ;
+                    :hasCulturalContext "Multi-layered heritage: Greek, Roman, Byzantine, and Venetian" ;
+                    :hasCulturalHeritageStatus "UNESCO World Heritage Site (1992)" ;
+                    :hasCulturalSignificance "Exceptional urban archaeological site with a continuous history" ;
+                    :hasDateOfDiscovery "1928" ;
+                    :hasName "Butrint" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ButrintAncientTheater
+:ButrintAncientTheater rdf:type owl:NamedIndividual ,
+                                :ArchitecturalMonument ;
+                       :hasLocation :SarandaRegion ;
+                       :isPartOf :ButrintUNESCOSite ;
+                       :locatedIn :SarandaRegion ;
+                       :hasCulturalContext "Hellenistic and Roman public architecture" ;
+                       :hasCulturalHeritageStatus "UNESCO World Heritage Site" ;
+                       :hasCulturalSignificance "well-preserved example of ancient performance space" ;
+                       :hasMaterial "stone" ;
+                       :hasName "Ancient Theater of Butrint" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ButrintUNESCOSite
+:ButrintUNESCOSite rdf:type owl:NamedIndividual ,
+                            :UNESCOSite ;
+                   :containsMonument :BaptisteryButrint ,
+                                     :ButrintAncientTheater ;
+                   :featuresBuilding :BaptisteryButrint ,
+                                     :BasilicaButrint ;
+                   :hasName "Butrint" ;
+                   :hasUNESCODesignation "World Heritage Site – Cultural" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ByzantineDefense
+:ByzantineDefense rdf:type owl:NamedIndividual ,
+                           :HistoricEvent ;
+                  owl:differentFrom :ByzantineFortification ;
+                  :occurredIn :DurresRegion ;
+                  :occurredOn :Date_6thCentury ;
+                  :hasEventDuration "6th–11th centuries" ;
+                  :hasName "Byzantine Defense in Illyricum" ;
+                  :hasStartDate "527" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ByzantineFortification
+:ByzantineFortification rdf:type owl:NamedIndividual ,
+                                 :HistoricEvent ;
+                        :occurredIn :DurresRegion ;
+                        :occurredOn :Date_6thCentury ;
+                        :hasName "Byzantine Fortification" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ByzantinePeriod
+:ByzantinePeriod rdf:type owl:NamedIndividual ,
+                          :TimePeriod ;
+                 rdfs:label "4th – 15th century AD (Byzantine Period)"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ChurchOfSaintMaryApollonia
+:ChurchOfSaintMaryApollonia rdf:type owl:NamedIndividual ,
+                                     :OrthodoxChurch ;
+                            :hasLocation :FierReigon ;
+                            :isPartOf :ApolloniaUNESCOSite ;
+                            :locatedIn :FierReigon ;
+                            :hasArchitecturalStyle "Byzantine" ;
+                            :hasCulturalContext "medieval Christian Albanian church" ;
+                            :hasCulturalHeritageStatus "Protected cultural monument" ;
+                            :hasCulturalSignificance "monument of spiritual heritage" ;
+                            :hasName "Church of Saint Mary (Apollonia)" ;
+                            :hasReligion "Christianity - Eastern Orthodox" ;
+                            :hasRestorationDate "1985-08-01T00:00:00"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ChurchOfSaintMaryBerat
+:ChurchOfSaintMaryBerat rdf:type owl:NamedIndividual ,
+                                 :OrthodoxChurch ;
+                        :hasLocation :BeratRegion ;
+                        :isPartOf :BeratUNESCOSite ;
+                        :locatedIn :BeratRegion ;
+                        :hasCulturalContext "byzantine religious architecture" ;
+                        :hasCulturalHeritageStatus "Cultural Heritage of Albania" ;
+                        :hasCulturalSignificance "contains the Onufri Iconography Museum" ;
+                        :hasMaterial "stone and brick" ;
+                        :hasName "church of Saint Mary of Blachernae" ;
+                        :hasRestorationDate "1948-10-16T00:00:00"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ChurchOfTheHolyTrinityBerat
+:ChurchOfTheHolyTrinityBerat rdf:type owl:NamedIndividual ,
+                                      :OrthodoxChurch ;
+                             :hasLocation :BeratRegion ;
+                             :locatedIn :BeratRegion ;
+                             :hasCulturalContext "Byzantine religious architecture" ;
+                             :hasCulturalHeritageStatus "Cultural Heritage of Albania" ;
+                             :hasCulturalSignificance "12th-century Orthodox church with cross-in-square design" ;
+                             :hasMaterial "stone" ;
+                             :hasName "Church of the Holy Trinity" ;
+                             :hasRestorationDate "1948-10-16T00:00:00"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/CodexBeratinus1
+:CodexBeratinus1 rdf:type owl:NamedIndividual ,
+                          :Manuscript ;
+                 :exhibitedIn :OnufriIconographicMuseum ;
+                 :hasLocation :Berat ;
+                 :isPartOf :BeratUNESCOSite ;
+                 :locatedIn :Berat ;
+                 :originatedFrom :Date_6thCentury ;
+                 :hasCreator "unknown Byzantine scribe" ;
+                 :hasCulturalContext "Byzantine Gospel manuscript" ;
+                 :hasCulturalHeritageStatus "UNESCO Memory of the World Register" ;
+                 :hasCulturalSignificance "UNESCO-registered early Christian codex" ;
+                 :hasDateOfDiscovery "rediscovered in 1868" ;
+                 :hasLanguage "Greek" ;
+                 :hasMaterial "purple-dyed parchment" ;
+                 :hasName "Codex Purpureus Beratinus I" ;
+                 :hasPeriodOfUse "6th century" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/CommunistPeriod
+:CommunistPeriod rdf:type owl:NamedIndividual ,
+                          :TimePeriod ;
+                 rdfs:label "1944-1991 (Communism period)"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_12thCentury
+:Date_12thCentury rdf:type owl:NamedIndividual ,
+                           :TimePeriod ;
+                  rdfs:label "12th century"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_12thCenturyBC
+:Date_12thCenturyBC rdf:type owl:NamedIndividual ,
+                             :TimePeriod ;
+                    rdfs:label "12th century BC"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_1462
+:Date_1462 rdf:type owl:NamedIndividual ,
+                    :TimePeriod ;
+           rdfs:label "1462"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_14th15thCentury
+:Date_14th15thCentury rdf:type owl:NamedIndividual ,
+                               :TimePeriod ;
+                      rdfs:label "14th – 15th century"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_1555
+:Date_1555 rdf:type owl:NamedIndividual ,
+                    :TimePeriod ;
+           rdfs:label "1555"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_15thCentury
+:Date_15thCentury rdf:type owl:NamedIndividual ,
+                           :TimePeriod ;
+                  rdfs:label "15th century"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_16thCentury
+:Date_16thCentury rdf:type owl:NamedIndividual ,
+                           :TimePeriod ;
+                  rdfs:label "16th century"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_18000BP
+:Date_18000BP rdf:type owl:NamedIndividual ,
+                       :TimePeriod ;
+              rdfs:label "circa 18000 BP (Before Present)"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_18thCentury
+:Date_18thCentury rdf:type owl:NamedIndividual ,
+                           :TimePeriod ;
+                  rdfs:label "18th century"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_1929
+:Date_1929 rdf:type owl:NamedIndividual ,
+                    :TimePeriod ;
+           rdfs:label "1929"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_19thCentury
+:Date_19thCentury rdf:type owl:NamedIndividual ,
+                           :TimePeriod ;
+                  rdfs:label "19th century"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_1stCenturyAD
+:Date_1stCenturyAD rdf:type owl:NamedIndividual ,
+                            :TimePeriod ;
+                   rdfs:label "1st century AD"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_20thCentury
+:Date_20thCentury rdf:type owl:NamedIndividual ,
+                           :TimePeriod ;
+                  rdfs:label "20th century"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_3rdCenturyBC
+:Date_3rdCenturyBC rdf:type owl:NamedIndividual ,
+                            :TimePeriod ;
+                   rdfs:label "3rd century BC"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_4thCenturyBC
+:Date_4thCenturyBC rdf:type owl:NamedIndividual ,
+                            :TimePeriod ;
+                   rdfs:label "4th century BC"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_5thCentury
+:Date_5thCentury rdf:type owl:NamedIndividual ,
+                          :TimePeriod ;
+                 rdfs:label "5th century"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_5thCenturyBC
+:Date_5thCenturyBC rdf:type owl:NamedIndividual ,
+                            :TimePeriod ;
+                   rdfs:label "5th century BC"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_6thCentury
+:Date_6thCentury rdf:type owl:NamedIndividual ,
+                          :TimePeriod ;
+                 rdfs:label "6th century"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_6thCenturyBC
+:Date_6thCenturyBC rdf:type owl:NamedIndividual ,
+                            :TimePeriod ;
+                   rdfs:label "6th century BC"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_8thCenturyBC
+:Date_8thCenturyBC rdf:type owl:NamedIndividual ,
+                            :TimePeriod ;
+                   rdfs:label "8th century BC"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_AncientOralTradition
+:Date_AncientOralTradition rdf:type owl:NamedIndividual ,
+                                    :TimePeriod ;
+                           rdfs:label "before 1st millennium BC ( Ancient Oral Tradition period)"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_HellenisticPeriod
+:Date_HellenisticPeriod rdf:type owl:NamedIndividual ,
+                                 :TimePeriod ;
+                        rdfs:label "323 BC – 168 BC (Hellenistic period)"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_LateNeolithic
+:Date_LateNeolithic rdf:type owl:NamedIndividual ,
+                             :TimePeriod ;
+                    rdfs:label "4th millennium BC (Late Neolithic)"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_Mid6thCenturyBC
+:Date_Mid6thCenturyBC rdf:type owl:NamedIndividual ,
+                               :TimePeriod ;
+                      rdfs:label "mid 6th century"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_OttomanPeriod
+:Date_OttomanPeriod rdf:type owl:NamedIndividual ,
+                             :TimePeriod ;
+                    owl:differentFrom :OttomanPeriod ;
+                    rdfs:label "1385-1912 (Otoman period)"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_PreChristianTradition
+:Date_PreChristianTradition rdf:type owl:NamedIndividual ,
+                                     :TimePeriod ;
+                            rdfs:label "before 1th century AD ( Prechristian period)"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Date_TraditionalPeriod
+:Date_TraditionalPeriod rdf:type owl:NamedIndividual ,
+                                 :TimePeriod ;
+                        rdfs:label "1479-1912 ( Traditional Period)"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/DevollRegion
+:DevollRegion rdf:type owl:NamedIndividual ,
+                       :Region ;
+              :hasLocationType "Region" ;
+              :hasName "Devoll" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/DevollianPottery
+:DevollianPottery rdf:type owl:NamedIndividual ,
+                           :Pottery ;
+                  :exhibitedIn :NationalHistoryMuseumTirana ;
+                  :hasLocation :DevollRegion ;
+                  :locatedIn :DevollRegion ;
+                  :originatedFrom :Date_8thCenturyBC ;
+                  :hasCulturalContext "Illyrian culture of the Devoll Valley" ;
+                  :hasCulturalHeritageStatus "archaeological cultural object" ;
+                  :hasCulturalSignificance "regional Illyrian ceramic tradition" ;
+                  :hasMaterial "clay" ;
+                  :hasName "Devollian Pottery" ;
+                  :hasPeriodOfUse "Bronze and Iron Age" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/DitaEVeres
+:DitaEVeres rdf:type owl:NamedIndividual ,
+                     :CulturalFestival ;
+            :originatedFrom :Date_PreChristianTradition ;
+            :originatesFrom :Elbasan ;
+            :hasCulturalContext "Spring festival rooted in pagan Albanian traditions" ;
+            :hasCulturalHeritageStatus "National Cultural Festival" ;
+            :hasCulturalSignificance "Celebrated across Albania, especially in Elbasan, symbolizing rebirth and nature" ;
+            :hasName "Dita e Veres" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/DurresCastle
+:DurresCastle rdf:type owl:NamedIndividual ,
+                       :CastleOrFortress ;
+              :associatedWithEvent :ByzantineFortification ;
+              :hasLocation :DurresRegion ;
+              :locatedIn :DurresRegion ;
+              :originatedFrom :Date_5thCentury ;
+              :hasCreator "Byzantine Emperor Anastasius I" ;
+              :hasCulturalContext "Defense against invasions along the Adriatic coast" ;
+              :hasCulturalHeritageStatus "National Monument of Albania" ;
+              :hasCulturalSignificance "Defense against invasions along the Adriatic coast" ;
+              :hasDateOfDiscovery "5-th century" ;
+              :hasName "Durres Castle" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/DurresLatinInscriptions
+:DurresLatinInscriptions rdf:type owl:NamedIndividual ,
+                                  :RockArtOrInscription ;
+                         :associatedWithEvent :RomanColonizationOfDyrrachium ;
+                         :hasLocation :DurresRegion ;
+                         :locatedIn :DurresRegion ;
+                         :originatedFrom :Date_1stCenturyAD ;
+                         :hasCreator "Roman settlers and local Italic communities" ;
+                         :hasCulturalContext "Roman epigraphic tradition in Illyria" ;
+                         :hasCulturalHeritageStatus "National Archaeological Heritage" ;
+                         :hasCulturalSignificance "Evidence of Roman administrative and social structures" ;
+                         :hasDateOfDiscovery "Various discoveries since the 20th century" ;
+                         :hasName "Latin Inscriptions of Durres" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/DurresRegion
+:DurresRegion rdf:type owl:NamedIndividual ,
+                       :Region ;
+              :hasLocationType "Region" ;
+              :hasName "Durres Region" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Elbasan
+:Elbasan rdf:type owl:NamedIndividual ,
+                  :City ;
+         :hasHistoricalPeriod :OttomanPeriod ;
+         :hasLocationType "City" ;
+         :hasName "Elbasan" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ElbasanGospelManuscript
+:ElbasanGospelManuscript rdf:type owl:NamedIndividual ,
+                                  :Manuscript ;
+                         :exhibitedIn :NationalHistoryMuseumTirana ;
+                         :hasLocation :Elbasan ;
+                         :locatedIn :Elbasan ;
+                         :originatedFrom :Date_18thCentury ;
+                         :hasCreator "anonymous Orthodox scholar" ;
+                         :hasCulturalContext "Christian liturgical texts in the Elbasan alphabet" ;
+                         :hasCulturalHeritageStatus "Rare script heritage" ;
+                         :hasCulturalSignificance "rare religious manuscript in a unique Albanian script" ;
+                         :hasDateOfDiscovery "1911" ;
+                         :hasLanguage "Albanian" ;
+                         :hasMaterial "paper" ;
+                         :hasName "Gospel Manuscript in Elbasan Script" ;
+                         :hasPeriodOfUse "18-th century" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/EtHemBeyMosque
+:EtHemBeyMosque rdf:type owl:NamedIndividual ,
+                         :Mosque ;
+                :hasCity :Tirana ;
+                :hasLocation :Tirana ,
+                             :TiranaRegion ;
+                :locatedIn :Tirana ,
+                           :TiranaRegion ;
+                :hasArchitecturalStyle "Ottoman architecture" ;
+                :hasConstructionDate "1821-06-09T00:00:00"^^xsd:dateTime ;
+                :hasCulturalContext "Ottoman-era Islamic architecture" ;
+                :hasCulturalHeritageStatus "Cultural Heritage of Albania" ;
+                :hasCulturalSignificance "Symbol of Tirana's historical center; notable for unique frescoes" ;
+                :hasName "Et'hem Bey Mosque" ;
+                :hasReligion "Sunni Islam" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/EthnographicMuseumGjirokaster
+:EthnographicMuseumGjirokaster rdf:type owl:NamedIndividual ,
+                                        :CulturalMuseum ;
+                               :hasLocation :Gjirokaster ;
+                               :isPartOf :GjirokasterUNESCOSite ;
+                               :locatedIn :Gjirokaster ;
+                               :hasArchitecturalStyle "Ottoman-era stone house architecture" ;
+                               :hasCulturalContext "Traditional Gjirokaster lifestyle and crafts" ;
+                               :hasCulturalHeritageStatus "National Museum of Albania" ;
+                               :hasCulturalSignificance "Showcases the rich cultural traditions and architecture of Gjirokaster" ;
+                               :hasName "Ethnographic Museum of Gjirokaster" ;
+                               :hasWebsite "https://en.wikipedia.org/wiki/Ethnographic_Museum_of_Gjirokast%C3%ABr"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/EvangelismIconBerat
+:EvangelismIconBerat rdf:type owl:NamedIndividual ,
+                              :VisualArtwork ;
+                     :exhibitedIn :OnufriIconographicMuseum ;
+                     :hasLocation :Berat ;
+                     :isPartOf :BeratUNESCOSite ;
+                     :locatedIn :Berat ;
+                     :hasCreator "anonymous" ;
+                     :hasCulturalContext "Byzantine iconography in medieval Albania" ;
+                     :hasCulturalHeritageStatus "museum-preserved Orthodox icon" ;
+                     :hasCulturalSignificance "religious icon depicting the Annunciation of Mary" ;
+                     :hasMaterial "wood and tempera" ;
+                     :hasName "Evangelism" ;
+                     :hasPeriodOfUse "14th – 15th century" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Fier
+:Fier rdf:type owl:NamedIndividual ,
+               :City ;
+      :hasHistoricalPeriod :CommunistPeriod ;
+      :hasLocationType "City" ;
+      :hasName "Fier" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/FierReigon
+:FierReigon rdf:type owl:NamedIndividual ,
+                     :Region ;
+            :hasLocationType "Region" ;
+            :hasName "Fier Region" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/FormulaEPagezimit
+:FormulaEPagezimit rdf:type owl:NamedIndividual ,
+                            :Manuscript ;
+                   :exhibitedIn :NationalHistoryMuseumTirana ;
+                   :originatedFrom :Date_1462 ;
+                   :hasCreator "Pal Engjelli" ;
+                   :hasCulturalContext "Catholic liturgical tradition in medieval Albania" ;
+                   :hasCulturalHeritageStatus "liturgical linguistic heritage" ;
+                   :hasCulturalSignificance "earliest evidence of liturgical Albanian writing" ;
+                   :hasDateOfDiscovery "1915" ;
+                   :hasLanguage "Albanian" ;
+                   :hasMaterial "parchment" ;
+                   :hasName "Formula e pagezimit" ;
+                   :hasPeriodOfUse "15-th century" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/FranciscanChurchTirana
+:FranciscanChurchTirana rdf:type owl:NamedIndividual ,
+                                 :CatholicChurch ;
+                        :hasCity :Tirana ;
+                        :hasLocation :Tirana ;
+                        :locatedIn :Tirana ;
+                        :hasArchitecturalStyle "Neo-Gothic" ;
+                        :hasConstructionDate "1939-12-24T00:00:00"^^xsd:dateTime ;
+                        :hasCulturalContext "Franciscan ecclesiastical architecture" ;
+                        :hasCulturalHeritageStatus "Cultural Heritage of Albania" ;
+                        :hasCulturalSignificance "Significant religious site for the Catholic community in Tirana" ;
+                        :hasName "Franciscan Church" ;
+                        :hasReligion "Roman Catholic" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Gjirokaster
+:Gjirokaster rdf:type owl:NamedIndividual ,
+                      :City ;
+             :hasHistoricalPeriod :OttomanPeriod ;
+             :hasLocationType "City" ;
+             :hasName "Gjirokaster" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/GjirokasterCastle
+:GjirokasterCastle rdf:type owl:NamedIndividual ,
+                            :CastleOrFortress ;
+                   :associatedWithEvent :OttomanExpansion ;
+                   :hasLocation :GjirokasterRegion ;
+                   :isPartOf :GjirokasterUNESCOSite ;
+                   :locatedIn :GjirokasterRegion ;
+                   :originatedFrom :Date_12thCentury ;
+                   :hasCreator "Byzantine Empire" ;
+                   :hasCulturalContext "Byzantine and Ottoman periods" ;
+                   :hasCulturalHeritageStatus "Part of UNESCO World Heritage Site" ;
+                   :hasCulturalSignificance "Strategic fortress overlooking the Drino Valley" ;
+                   :hasDateOfDiscovery "12-th century" ;
+                   :hasName "Gjirokaster Castle" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/GjirokasterObelisk
+:GjirokasterObelisk rdf:type owl:NamedIndividual ,
+                             :Memorial ;
+                    :associatedWithEvent :AlbanianLanguageEducation ;
+                    :hasLocation :Gjirokaster ;
+                    :locatedIn :Gjirokaster ;
+                    :hasConstructionDate "1978-03-07T00:00:00"^^xsd:dateTime ;
+                    :hasCreator "Muntaz Dhrami, Ksenofon Kostaqi, Stefan Papamihali" ;
+                    :hasCulturalContext "commemoration of Albanian education and language" ;
+                    :hasCulturalHeritageStatus "national cultural monument" ;
+                    :hasCulturalSignificance "symbolizes the importance of Albanian language education" ;
+                    :hasMaterial "hewn stone blocks" ;
+                    :hasName "Gjirokaster Obelisk (Memedheu ABC)" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/GjirokasterRegion
+:GjirokasterRegion rdf:type owl:NamedIndividual ,
+                            :Region ;
+                   :hasLocationType "Region" ;
+                   :hasName "Gjirokaster Region" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/GjirokasterUNESCOSite
+:GjirokasterUNESCOSite rdf:type owl:NamedIndividual ,
+                                :UNESCOSite ;
+                       :containsMonument :GjirokasterCastle ,
+                                         :OttomanHousesGjirokaster ;
+                       :featuresBuilding :EthnographicMuseumGjirokaster ;
+                       :hasName "Historic Centres of Berat and Gjirokastra" ;
+                       :hasUNESCODesignation "World Heritage Site – Cultural" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/GjonBuzukuMeshari
+:GjonBuzukuMeshari rdf:type owl:NamedIndividual ,
+                            :Manuscript ;
+                   :exhibitedIn :NationalHistoryMuseumTirana ;
+                   :hasLocation :Tirana ;
+                   :locatedIn :Tirana ;
+                   :originatedFrom :Date_1555 ;
+                   :hasCreator "Gjon Buzuku" ;
+                   :hasCulturalContext "Albanian Catholic heritage" ;
+                   :hasCulturalHeritageStatus "National Treasure of Albania" ;
+                   :hasCulturalSignificance "first known book written in the Albanian language" ;
+                   :hasDateOfDiscovery "1740" ;
+                   :hasLanguage "Albanian (Gheg dialect, Latin alphabet)" ;
+                   :hasMaterial "parchment" ;
+                   :hasName "Meshari" ;
+                   :hasPeriodOfUse "16-th century" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/GramaBayInscriptions
+:GramaBayInscriptions rdf:type owl:NamedIndividual ,
+                               :RockArtOrInscription ;
+                      :associatedWithEvent :MaritimeNavigationAndTrade ;
+                      :hasLocation :VloraRegion ;
+                      :locatedIn :VloraRegion ;
+                      :originatedFrom :Date_3rdCenturyBC ;
+                      :hasCreator "Ancient mariners, soldiers, and travelers" ;
+                      :hasCulturalContext "Maritime inscriptions spanning Hellenistic to Ottoman periods" ;
+                      :hasCulturalHeritageStatus "Protected Archaeological Site" ;
+                      :hasCulturalSignificance "Multilingual inscriptions reflecting 2,000 years of seafaring history" ;
+                      :hasDateOfDiscovery "Early 20th century" ;
+                      :hasName "Rock Inscriptions of Grama Bay" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/HimareRegion
+:HimareRegion rdf:type owl:NamedIndividual ,
+                       :Region ;
+              :hasLocationType "Himare Region" ,
+                               "Region" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/HumanitarianRecognition
+:HumanitarianRecognition rdf:type owl:NamedIndividual ,
+                                  :HistoricEvent ;
+                         :occurredIn :AlbaniaRegion ;
+                         :occurredOn :Date_1943 ;
+                         :hasEventDuration "1943–1945" ;
+                         :hasName "Recognition of Albanian Humanitarian Acts during WWII" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/IllyrianFuneraryRites
+:IllyrianFuneraryRites rdf:type owl:NamedIndividual ,
+                                :HistoricEvent ;
+                       owl:differentFrom :IllyrianRoyalBurials ,
+                                         :IllyrianTribalBurials ;
+                       :occurredIn :MatRegion ;
+                       :occurredOn :Date_10thCenturyBC ;
+                       :hasEventDuration "10th–2nd century BC" ;
+                       :hasName "Illyrian Funerary Rites and Rituals" ;
+                       :hasStartDate "1000 BC" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/IllyrianHellenization
+:IllyrianHellenization rdf:type owl:NamedIndividual ,
+                                :HistoricEvent ;
+                       :occurredIn :VloraRegion ;
+                       :occurredOn :Date_HellenisticPeriod ;
+                       :hasEventDuration "323 BC – 168 BC (Hellenistic period)" ;
+                       :hasName "Illyrian Hellenization" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/IllyrianHelmet
+:IllyrianHelmet rdf:type owl:NamedIndividual ,
+                         :Weapon ;
+                :associatedWithEvent :IllyrianWars ;
+                :exhibitedIn :NationalHistoryMuseumTirana ;
+                :hasLocation :Tirana ;
+                :locatedIn :Tirana ;
+                :originatedFrom :Date_6thCenturyBC ;
+                :hasCreator "Illyrian" ;
+                :hasCulturalContext "used by Illyrian tribes in ancient Albania" ;
+                :hasCulturalHeritageStatus "archaeological heritage of Albania" ;
+                :hasCulturalSignificance "iconic symbol of Illyrian warrior culture" ;
+                :hasDateOfDiscovery "1958" ;
+                :hasMaterial "bronze" ;
+                :hasName "Illyrian Bronze Helmet" ;
+                :hasPeriodOfUse "6th–3rd century BC" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/IllyrianRoyalBurials
+:IllyrianRoyalBurials rdf:type owl:NamedIndividual ,
+                               :HistoricEvent ;
+                      owl:differentFrom :IllyrianTribalBurials ;
+                      :occurredIn :PogradecRegion ;
+                      :occurredOn :Date_8thCenturyBC ;
+                      :hasEventDuration "8th–2nd century BC" ;
+                      :hasName "Illyrian Royal Burial Practices" ;
+                      :hasStartDate "800 BC" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/IllyrianTribalBurials
+:IllyrianTribalBurials rdf:type owl:NamedIndividual ,
+                                :HistoricEvent ;
+                       :occurredIn :ShkoderRegion ;
+                       :occurredOn :Date_10thCenturyBC ;
+                       :hasEventDuration "10th–4th century BC" ;
+                       :hasName "Illyrian Tribal Burials in Northern Albania" ;
+                       :hasStartDate "1000 BC" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/IllyrianTumuliMat
+:IllyrianTumuliMat rdf:type owl:NamedIndividual ,
+                            :TombOrBurialMound ;
+                   :associatedWithEvent :IllyrianTribalBurials ;
+                   :hasLocation :MatRegion ;
+                   :locatedIn :MatRegion ;
+                   :originatedFrom :Date_8thCenturyBC ;
+                   :hasCreator "Glasinac-Mati culture individuals" ;
+                   :hasCulturalContext "Late Bronze Age to Early Iron Age Illyrian warrior elite" ;
+                   :hasCulturalHeritageStatus "National Archaeological Site" ;
+                   :hasCulturalSignificance "Burial mounds containing weapons, ornaments, and evidence of social stratification" ;
+                   :hasDateOfDiscovery "1970" ;
+                   :hasName "Illyrian Tumuli of Mat" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/IllyrianWars
+:IllyrianWars rdf:type owl:NamedIndividual ,
+                       :HistoricEvent ;
+              :occurredIn :IllyriaRegion ;
+              :occurredOn :Date_3rdCenturyBC ;
+              :hasEventDuration "229–168 BC" ;
+              :hasName "Illyrian Wars with Rome" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/IndependenceMonumentVlore
+:IndependenceMonumentVlore rdf:type owl:NamedIndividual ,
+                                    :Memorial ;
+                           :associatedWithEvent :AlbanianDeclarationOfIndependence ;
+                           :hasCity :Vlora ;
+                           :hasLocation :Vlora ,
+                                        :VloraRegion ;
+                           :locatedIn :Vlora ,
+                                      :VloraRegion ;
+                           :hasConstructionDate "1972-11-28T00:00:00"^^xsd:dateTime ;
+                           :hasCreator "Muntaz Dhrami, Kristaq Rama, Shaban Hadëri" ;
+                           :hasCulturalContext "commemoration of the Albanian Declaration of Independence" ;
+                           :hasCulturalHeritageStatus "national cultural monument" ;
+                           :hasCulturalSignificance "symbol of Albania's independence and national identity" ;
+                           :hasMaterial "bronze and stone" ;
+                           :hasName "Independence Monument" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/IndependencePeriod
+:IndependencePeriod rdf:type owl:NamedIndividual ,
+                             :TimePeriod ;
+                    rdfs:label "1912 – 1939 (Independence Period)"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/InterwarPeriod
+:InterwarPeriod rdf:type owl:NamedIndividual ,
+                         :TimePeriod ;
+                rdfs:label "1912 – 1939 (Interwar Period)"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/IsaBoletini
+:IsaBoletini rdf:type owl:NamedIndividual ,
+                      :ImportantPerson ;
+             :collaboratedWith :IsmailQemali ;
+             :participatedIn :AlbanianDeclarationOfIndependence ;
+             :hasName "Isa Boletini" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/IsaBoletiniStatue
+:IsaBoletiniStatue rdf:type owl:NamedIndividual ,
+                            :Statue ;
+                   :associatedWithEvent :AlbanianNationalMovement ;
+                   :hasCity :Shkoder ;
+                   :hasLocation :Shkoder ,
+                                :ShkoderRegion ;
+                   :locatedIn :Shkoder ,
+                              :ShkoderRegion ;
+                   :hasConstructionDate "1986-01-01T00:00:00"^^xsd:dateTime ;
+                   :hasCulturalContext "commemoration of Albanian national hero Isa Boletini" ;
+                   :hasCulturalHeritageStatus "national cultural monument" ;
+                   :hasCulturalSignificance "symbol of Albanian resistance and patriotism" ;
+                   :hasMaterial "bronze" ;
+                   :hasName "Isa Boletini Monument" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/IsmailQemali
+:IsmailQemali rdf:type owl:NamedIndividual ,
+                       :ImportantPerson ;
+              :collaboratedWith :IsaBoletini ;
+              :participatedIn :AlbanianDeclarationOfIndependence ;
+              :hasName "Ismail Qemali" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/IsmailQemaliStatueVlore
+:IsmailQemaliStatueVlore rdf:type owl:NamedIndividual ,
+                                  :Statue ;
+                         :associatedWithEvent :AlbanianDeclarationOfIndependence ;
+                         :hasCity :Vlora ;
+                         :hasLocation :Vlora ,
+                                      :VloraRegion ;
+                         :locatedIn :Vlora ,
+                                    :VloraRegion ;
+                         :hasConstructionDate "1972-11-28T00:00:00"^^xsd:dateTime ;
+                         :hasCulturalContext "commemoration of the Albanian Declaration of Independence" ;
+                         :hasCulturalHeritageStatus "national cultural monument" ;
+                         :hasCulturalSignificance "honors the leader of Albania's independence movement" ;
+                         :hasMaterial "bronze" ;
+                         :hasName "Ismail Qemali Statue" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/KamenicaTumulus
+:KamenicaTumulus rdf:type owl:NamedIndividual ,
+                          :TombOrBurialMound ;
+                 :associatedWithEvent :IllyrianFuneraryRites ;
+                 :hasLocation :KorceRegion ;
+                 :locatedIn :KorceRegion ;
+                 :originatedFrom :Date_12thCenturyBC ;
+                 :hasCreator "Illyrian communities of southeastern Albania" ;
+                 :hasCulturalContext "Prehistoric burial practices from the Late Bronze Age" ;
+                 :hasCulturalHeritageStatus "Protected National Monument" ;
+                 :hasCulturalSignificance "Largest tumulus in the Balkans with over 400 graves and 3,500 artifacts" ;
+                 :hasDateOfDiscovery "2000" ;
+                 :hasName "Kamenica Tumulus" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/KingZogStatue
+:KingZogStatue rdf:type owl:NamedIndividual ,
+                        :Statue ;
+               :associatedWithEvent :AlbanianMonarchy ;
+               :hasCity :Tirana ;
+               :hasLocation :Tirana ,
+                            :TiranaRegion ;
+               :locatedIn :Tirana ,
+                          :TiranaRegion ;
+               :hasConstructionDate "2012-12-24T00:00:00"^^xsd:dateTime ;
+               :hasCreator "Kreshnik Xhiku" ;
+               :hasCulturalContext "commemoration of Zog I of Albania" ;
+               :hasCulturalHeritageStatus "national cultural monument" ;
+               :hasCulturalSignificance "honors the first and only King of Albania" ;
+               :hasMaterial "bronze on stone pedestal" ;
+               :hasName "King Zog I Statue" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Korce
+:Korce rdf:type owl:NamedIndividual ,
+                :City ;
+       :hasHistoricalPeriod :InterwarPeriod ;
+       :hasLocationType "City" ;
+       :hasName "Korce" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/KorceRegion
+:KorceRegion rdf:type owl:NamedIndividual ,
+                      :Region ;
+             :hasLocationType "Region" ;
+             :hasName "Korce Region" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Kruje
+:Kruje rdf:type owl:NamedIndividual ,
+                :City ;
+       :hasHistoricalPeriod :MedievalPeriod ;
+       :hasLocationType "City" ;
+       :hasName "Kruje" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/KrujeClockTower
+:KrujeClockTower rdf:type owl:NamedIndividual ,
+                          :ArchitecturalMonument ;
+                 :hasLocation :Kruje ;
+                 :locatedIn :Kruje ;
+                 :hasCulturalContext "medieval watchtower architecture" ;
+                 :hasCulturalHeritageStatus "Cultural Monument of Albania" ;
+                 :hasCulturalSignificance "part of Kruje Castle complex, originally constructed in the 11th century as a watchtower, it was converted into a clock tower in the 17th century after the 1617 earthquake." ;
+                 :hasMaterial "stone and brick" ;
+                 :hasName "Clock Tower of Kruje" ;
+                 :hasRestorationDate "2022-04-01T00:00:00"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/KrujeFortress
+:KrujeFortress rdf:type owl:NamedIndividual ,
+                        :CastleOrFortress ;
+               :associatedWithEvent :SkanderbegResistance ;
+               :hasLocation :KrujeRegion ;
+               :locatedIn :KrujeRegion ;
+               :originatedFrom :Date_12thCentury ;
+               :hasCreator "Medieval Albanian nobility" ;
+               :hasCulturalContext "Medieval Albanian resistance against the Ottoman Empire" ;
+               :hasCulturalHeritageStatus "National Monument of Albania" ;
+               :hasCulturalSignificance "Center of Skanderbeg's rebellion" ;
+               :hasDateOfDiscovery "1190" ;
+               :hasName "Kruje Fortress" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/KrujeRegion
+:KrujeRegion rdf:type owl:NamedIndividual ,
+                      :Region ;
+             :hasLocationType "Region" ;
+             :hasName "Kruje Region" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/LabovaChurch
+:LabovaChurch rdf:type owl:NamedIndividual ,
+                       :OrthodoxChurch ;
+              :hasCity :Gjirokaster ;
+              :hasLocation :Gjirokaster ,
+                           :GjirokasterRegion ;
+              :locatedIn :Gjirokaster ,
+                         :GjirokasterRegion ;
+              :hasArchitecturalStyle "Middle Byzantine" ;
+              :hasCulturalContext "Byzantine ecclesiastical architecture" ;
+              :hasCulturalHeritageStatus "Cultural Heritage of Albania" ;
+              :hasCulturalSignificance "One of the most representative examples of Byzantine architecture in Albania" ;
+              :hasName "Church of the Dormition of the Theotokos" ;
+              :hasReligion "Eastern Orthodox" ;
+              :hasRestorationDate "1948-11-16T00:00:00"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/LacRegion
+:LacRegion rdf:type owl:NamedIndividual ,
+                    :Region ;
+           :hasLocationType "Region" ;
+           :hasName "Lac Region" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/LastSupperIconVokopol
+:LastSupperIconVokopol rdf:type owl:NamedIndividual ,
+                                :VisualArtwork ;
+                       :exhibitedIn :OnufriIconographicMuseum ;
+                       :hasLocation :Berat ;
+                       :isPartOf :BeratUNESCOSite ;
+                       :locatedIn :Berat ;
+                       :originatedFrom :Date_18thCentury ;
+                       :hasCreator "anonymous" ;
+                       :hasCulturalContext "Orthodox iconography in Ottoman-era Albania" ;
+                       :hasCulturalHeritageStatus "museum-preserved religious artwork" ;
+                       :hasCulturalSignificance "religious icon depicting the Last Supper of Christ" ;
+                       :hasDateOfDiscovery "19-th century" ;
+                       :hasMaterial "wood and tempera" ;
+                       :hasName "Last Supper" ;
+                       :hasPeriodOfUse "late 18th century" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/LeadMosqueShkoder
+:LeadMosqueShkoder rdf:type owl:NamedIndividual ,
+                            :Mosque ;
+                   :hasCity :Shkoder ;
+                   :hasLocation :Shkoder ;
+                   :locatedIn :Shkoder ;
+                   :hasArchitecturalStyle "Ottoman" ;
+                   :hasConstructionDate "1773-08-02T00:00:00"^^xsd:dateTime ;
+                   :hasCulturalContext "Ottoman-era Islamic architecture" ;
+                   :hasCulturalSignificance "Cultural Heritage of Albania" ,
+                                            "Notable for its lead-covered dome and historical importance" ;
+                   :hasName "Lead Mosque (Xhamia e Plumbit)" ;
+                   :hasReligion "Sunni Islam" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/LionGateButrint
+:LionGateButrint rdf:type owl:NamedIndividual ,
+                          :ArchitecturalMonument ;
+                 :hasLocation :SarandaRegion ;
+                 :isPartOf :ButrintUNESCOSite ;
+                 :locatedIn :SarandaRegion ;
+                 :hasCulturalContext "ancient fortification" ;
+                 :hasCulturalHeritageStatus "UNESCO World Heritage Site" ;
+                 :hasCulturalSignificance "defensive structure with symbolic relief" ;
+                 :hasMaterial "stone" ;
+                 :hasName "Lion Gate of Butrint" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/LoguIBjeshkeve
+:LoguIBjeshkeve rdf:type owl:NamedIndividual ,
+                         :CulturalFestival ;
+                :originatedFrom :Date_20thCentury ;
+                :originatesFrom :ShkoderRegion ;
+                :hasCulturalContext "Annual beauty and cultural pageant for northern Albanian highlanders" ;
+                :hasCulturalHeritageStatus "Intangible Cultural Tradition of Northern Albania" ;
+                :hasCulturalSignificance "Celebrates traditional clothing, folklore, and female representation in the Alps" ;
+                :hasName "Logu i Bjeshkeve" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/MaritimeNavigationAndTrade
+:MaritimeNavigationAndTrade rdf:type owl:NamedIndividual ,
+                                     :HistoricEvent ;
+                            :occurredIn :DurresRegion ;
+                            :occurredOn :Date_12thCentury ;
+                            :hasEventDuration "12th–17th centuries" ;
+                            :hasName "Medieval Maritime Trade in Albanian Ports" ;
+                            :hasStartDate "1100" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/MatRegion
+:MatRegion rdf:type owl:NamedIndividual ,
+                    :Region ;
+           :hasLocationType "Region" ;
+           :hasName "Mat Region" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/MedievalPeriod
+:MedievalPeriod rdf:type owl:NamedIndividual ,
+                         :TimePeriod ;
+                rdfs:label "6th – 15th century AD (Medieval Period)"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ModernPeriod
+:ModernPeriod rdf:type owl:NamedIndividual ,
+                       :TimePeriod ;
+              rdfs:label "20th – 21st century (Modern period)"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/MotherAlbaniaStatue
+:MotherAlbaniaStatue rdf:type owl:NamedIndividual ,
+                              :Statue ;
+                     :associatedWithEvent :WorldWarII ;
+                     :hasCity :Tirana ;
+                     :hasLocation :Tirana ,
+                                  :TiranaRegion ;
+                     :locatedIn :Tirana ,
+                                :TiranaRegion ;
+                     :hasConstructionDate "1971-01-01T00:00:00"^^xsd:dateTime ;
+                     :hasCreator "Kristaq Rama, Muntaz Dhrami, Shaban Hadëri" ;
+                     :hasCulturalContext "commemoration of Albanian partisans of World War II" ;
+                     :hasCulturalHeritageStatus "national cultural monument" ;
+                     :hasCulturalSignificance "symbol of national gratitude to war martyrs" ;
+                     :hasMaterial "concrete" ;
+                     :hasName "Mother Albania" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/MotherGoddessVesselKamnik
+:MotherGoddessVesselKamnik rdf:type owl:NamedIndividual ,
+                                    :VisualArtwork ;
+                           :exhibitedIn :ArchaeologicalMuseumKorce ;
+                           :hasLocation :KorceRegion ;
+                           :locatedIn :KorceRegion ;
+                           :originatedFrom :Date_LateNeolithic ;
+                           :hasCreator "prehistoric Illyrian community" ;
+                           :hasCulturalContext "Late Neolithic period, prehistoric art" ;
+                           :hasCulturalHeritageStatus "prehistoric archaeological artefact" ;
+                           :hasCulturalSignificance "cult object symbolizing the mother, sun, and earth" ;
+                           :hasDateOfDiscovery "1982" ;
+                           :hasMaterial "ceramic" ;
+                           :hasName "Mother Goddess Anthropomorphic Vessel" ;
+                           :hasPeriodOfUse "Late Neolithic – 4th millennium BC" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/MotherTeresaStatueShkoder
+:MotherTeresaStatueShkoder rdf:type owl:NamedIndividual ,
+                                    :Statue ;
+                           :associatedWithEvent :HumanitarianRecognition ;
+                           :hasLocation :Shkoder ;
+                           :locatedIn :Shkoder ;
+                           :hasConstructionDate "2006-08-28T00:00:00"^^xsd:dateTime ;
+                           :hasCulturalContext "honoring Mother Teresa's humanitarian work" ;
+                           :hasCulturalHeritageStatus "national cultural monument" ;
+                           :hasCulturalSignificance "represents compassion and charitable contributions" ;
+                           :hasMaterial "bronze" ;
+                           :hasName "Mother Teresa Statue in Shkoder" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/NationalHistoryMuseumTirana
+:NationalHistoryMuseumTirana rdf:type owl:NamedIndividual ,
+                                      :HistoricalMuseum ;
+                             :displays :ApolloniaGoldEarrings ,
+                                       :DevollianPottery ,
+                                       :ElbasanGospelManuscript ,
+                                       :FormulaEPagezimit ,
+                                       :GjonBuzukuMeshari ,
+                                       :IllyrianHelmet ,
+                                       :OttomanFlintlockRifle ,
+                                       :PanathenaicAmphoraApollonia ;
+                             :hasLocation :Tirana ;
+                             :isPartOf :SkanderbegSquareUNESCOSite ;
+                             :locatedIn :Tirana ;
+                             :hasArchitecturalStyle "Modernist" ;
+                             :hasCreator "Government of Albania" ;
+                             :hasCulturalContext "Albanian national identity and historical memory" ;
+                             :hasCulturalHeritageStatus "National Museum of Albania" ;
+                             :hasCulturalSignificance "national historical institution" ;
+                             :hasName "National History Museum of Tirana" ;
+                             :hasWebsite "https://mhk.gov.al"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/NationalIndependenceMuseumVlore
+:NationalIndependenceMuseumVlore rdf:type owl:NamedIndividual ,
+                                          :HistoricalMuseum ;
+                                 :associatedWithEvent :AlbanianDeclarationOfIndependence ;
+                                 :commemorates :IsmailQemali ;
+                                 :hasLocation :Vlora ;
+                                 :isPartOf :VloreUNESCOTentativeSite ;
+                                 :locatedIn :Vlora ;
+                                 :hasArchitecturalStyle "Early 20th-century civic architecture" ;
+                                 :hasConstructionDate "1912-11-28T00:00:00"^^xsd:dateTime ;
+                                 :hasCreator "Restored and preserved by the Albanian state for national commemoration" ;
+                                 :hasCulturalContext "Albanian Declaration of Independence and the founding of the Albanian state" ;
+                                 :hasCulturalHeritageStatus "National Museum of Albania" ;
+                                 :hasCulturalSignificance "Preserves the house where Albania's independence was declared on 28 November 1912 and where the first Albanian government was established" ;
+                                 :hasName "National Museum of Independence" ;
+                                 :hasWebsite "https://www.visitalbania.app/listing/the-independence-museum/"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/NationalMuseumOfMedievalArt
+:NationalMuseumOfMedievalArt rdf:type owl:NamedIndividual ,
+                                      :ArtMuseum ;
+                             :hasLocation :Korce ;
+                             :locatedIn :Korce ;
+                             :hasArchitecturalStyle "Reconstructed modern building" ;
+                             :hasConstructionDate "1980-04-24T00:00:00"^^xsd:dateTime ;
+                             :hasCulturalContext "Medieval art and history of Albania" ;
+                             :hasCulturalHeritageStatus "National Museum of Albania" ;
+                             :hasCulturalSignificance "Dedicated to preserving and showcasing medieval art and artifacts from Albania" ;
+                             :hasName "National Museum of Medieval Art" ;
+                             :hasRestorationDate "2016-10-04T00:00:00"^^xsd:dateTime ;
+                             :hasWebsite "https://albania.al/activity/culture/korca-national-museum-of-medieval-art/"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Onufri
+:Onufri rdf:type owl:NamedIndividual ,
+                 :ImportantPerson ;
+        :participatedIn :ByzantineDefense ;
+        :hasName "Onufri" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/OnufriIconographicMuseum
+:OnufriIconographicMuseum rdf:type owl:NamedIndividual ,
+                                   :ArtMuseum ;
+                          :commemorates :Onufri ;
+                          :displays :AscensionElijahProphetIcon ,
+                                    :CodexBeratinus1 ,
+                                    :EvangelismIconBerat ,
+                                    :LastSupperIconVokopol ,
+                                    :SaintMaryWithJesusIcon ;
+                          :hasLocation :Berat ;
+                          :locatedIn :Berat ;
+                          :hasArchitecturalStyle "Located within the Church of the Dormition of St Mary" ;
+                          :hasConstructionDate "1986-02-27T00:00:00"^^xsd:dateTime ;
+                          :hasCulturalContext "Byzantine and post-Byzantine religious art" ;
+                          :hasCulturalHeritageStatus "National Museum of Albania" ;
+                          :hasCulturalSignificance "Houses 173 objects, including icons and liturgical items from the 14th to 20th centuries" ;
+                          :hasName "Onufri Iconographic Museum" ;
+                          :hasWebsite "https://muzeumet-berat.al/en/onufri-iconographic-museum/"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/OrthodoxCathedralKorca
+:OrthodoxCathedralKorca rdf:type owl:NamedIndividual ,
+                                 :OrthodoxChurch ;
+                        :hasCity :Korce ;
+                        :hasLocation :Korce ;
+                        :locatedIn :Korce ;
+                        :hasArchitecturalStyle "Byzantine Revival" ;
+                        :hasConstructionDate "1784-05-18T00:00:00"^^xsd:dateTime ;
+                        :hasCulturalContext "Byzantine ecclesiastical church" ;
+                        :hasCulturalHeritageStatus "Cultural Heritage of Albania" ;
+                        :hasCulturalSignificance "Major religious and cultural center for the Orthodox community" ;
+                        :hasName "Cathedral of the Resurrection of Christ" ;
+                        :hasReligion "Eastern Orthodox" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/OttomanExpansion
+:OttomanExpansion rdf:type owl:NamedIndividual ,
+                           :HistoricEvent ;
+                  owl:differentFrom :OttomanNavalDefense ;
+                  :occurredIn :AlbaniaRegion ;
+                  :occurredOn :Date_14th15thCentury ;
+                  :hasEventDuration "14th–15th centuries" ;
+                  :hasName "Ottoman Expansion into the Balkans" ;
+                  :hasStartDate "1385" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/OttomanFlintlockRifle
+:OttomanFlintlockRifle rdf:type owl:NamedIndividual ,
+                                :Weapon ;
+                       :associatedWithEvent :AlbanianRevoltsAgainstOttoman ;
+                       :exhibitedIn :NationalHistoryMuseumTirana ;
+                       :hasLocation :Tirana ;
+                       :locatedIn :Tirana ;
+                       :originatedFrom :Date_18thCentury ;
+                       :hasCreator "Ottoman" ;
+                       :hasCulturalContext "used by local fighters during Ottoman rule in Albania" ;
+                       :hasCulturalHeritageStatus "historic firearm of Albanian resistance" ;
+                       :hasCulturalSignificance "weapon used in uprisings against Ottoman Empire" ;
+                       :hasDateOfDiscovery "1975" ;
+                       :hasMaterial "steel and wood" ;
+                       :hasName "Ottoman Flintlock Rifle used in Albania" ;
+                       :hasPeriodOfUse "18th–19th century" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/OttomanHousesGjirokaster
+:OttomanHousesGjirokaster rdf:type owl:NamedIndividual ,
+                                   :ArchitecturalMonument ;
+                          :hasLocation :Gjirokaster ;
+                          :isPartOf :GjirokasterUNESCOSite ;
+                          :locatedIn :Gjirokaster ;
+                          :hasCulturalContext "Ottoman residential monument" ;
+                          :hasCulturalHeritageStatus "UNESCO World Heritage Site" ;
+                          :hasCulturalSignificance "examples of Balkan-Ottoman domestic architecture" ;
+                          :hasMaterial "stone and wood" ;
+                          :hasName "Ottoman Houses of Gjirokaster" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/OttomanNavalDefense
+:OttomanNavalDefense rdf:type owl:NamedIndividual ,
+                              :HistoricEvent ;
+                     :occurredIn :Vlora ;
+                     :occurredOn :Date_16thCentury ;
+                     :hasEventDuration "16th century" ;
+                     :hasName "Ottoman Naval Defense in Albanian Ports" ;
+                     :hasStartDate "1500" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/OttomanPeriod
+:OttomanPeriod rdf:type owl:NamedIndividual ,
+                        :TimePeriod ;
+               rdfs:label "1479 – 1912 (Ottoman Period)"@en .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/PanathenaicAmphoraApollonia
+:PanathenaicAmphoraApollonia rdf:type owl:NamedIndividual ,
+                                      :Pottery ;
+                             :exhibitedIn :NationalHistoryMuseumTirana ;
+                             :hasLocation :FierReigon ;
+                             :isPartOf :ApolloniaUNESCOSite ;
+                             :locatedIn :FierReigon ;
+                             :originatedFrom :Date_Mid6thCenturyBC ;
+                             :hasCulturalContext "Greek colonial period (Apollonia) pottery" ;
+                             :hasCulturalHeritageStatus "Museum-preserved heritage object" ;
+                             :hasCulturalSignificance "ceremonial Greek artifact" ;
+                             :hasMaterial "ceramic" ;
+                             :hasName "Ceramic Panathenaic Black-Figured Amphora" ;
+                             :hasPeriodOfUse "mid-6th – 2nd century BC" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/PetrelaCastle
+:PetrelaCastle rdf:type owl:NamedIndividual ,
+                        :CastleOrFortress ;
+               :associatedWithEvent :ByzantineDefense ;
+               :hasLocation :TiranaRegion ;
+               :locatedIn :TiranaRegion ;
+               :originatedFrom :Date_6thCentury ;
+               :hasCreator "Byzantine Empire" ;
+               :hasCulturalContext "Byzantine and Ottoman periods castle" ;
+               :hasCulturalHeritageStatus "National Monument of Albania" ;
+               :hasCulturalSignificance "Strategic lookout over the Erzen Valley" ;
+               :hasDateOfDiscovery "6th century" ;
+               :hasName "Petrela Castle" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/PogradecRegion
+:PogradecRegion rdf:type owl:NamedIndividual ,
+                         :Region ;
+                :hasHistoricalPeriod :ModernPeriod ;
+                :hasLocationType "Region" ;
+                :hasName "Pogradec Region" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/PolyphonicSinging
+:PolyphonicSinging rdf:type owl:NamedIndividual ,
+                            :FolkDance ;
+                   :isPartOf :GjirokasterUNESCOSite ;
+                   :originatedFrom :Date_AncientOralTradition ;
+                   :originatesFrom :GjirokasterRegion ;
+                   :hasCulturalContext "Southern Albanian traditional vocal music performed in groups" ;
+                   :hasCulturalHeritageStatus "UNESCO Intangible Cultural Heritage (2005)" ;
+                   :hasCulturalSignificance "Recognized by UNESCO as a Masterpiece of the Oral and Intangible Heritage of Humanity" ;
+                   :hasName "Albanian Iso-Polyphony" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/PortoPalermoCastle
+:PortoPalermoCastle rdf:type owl:NamedIndividual ,
+                             :CastleOrFortress ;
+                    :associatedWithEvent :OttomanNavalDefense ;
+                    :hasLocation :HimareRegion ;
+                    :locatedIn :HimareRegion ;
+                    :hasCreator "Ali Pasha of Tepelena" ;
+                    :hasCulturalContext "Ottoman period castle" ;
+                    :hasCulturalHeritageStatus "National Monument of Albania" ;
+                    :hasCulturalSignificance "Naval base and residence of Ali Pasha" ;
+                    :hasDateOfDiscovery "19th century" ;
+                    :hasName "Porto Palermo Castle" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/RockCutChambersSelca
+:RockCutChambersSelca rdf:type owl:NamedIndividual ,
+                               :ArchitecturalMonument ;
+                      :hasLocation :PogradecRegion ;
+                      :isPartOf :SelcaUNESCOTentativeSite ;
+                      :locatedIn :PogradecRegion ;
+                      :hasCulturalContext "Illyrian funerary architecture" ;
+                      :hasCulturalHeritageStatus "UNESCO Tentative List" ;
+                      :hasCulturalSignificance "unique tombs carved into rock by Illyrian elites" ;
+                      :hasMaterial "limestone" ;
+                      :hasName "Rock-cut Chambers of Selca e Poshtme" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/RomanColonizationOfDyrrachium
+:RomanColonizationOfDyrrachium rdf:type owl:NamedIndividual ,
+                                        :HistoricEvent ;
+                               owl:differentFrom :RomanConquest ;
+                               :occurredIn :DurresRegion ;
+                               :occurredOn <http://www.semanticweb.org/ana/ontologies/2025/4/albania#1st_century_BC> ;
+                               :hasEventDuration "1st century BC" ;
+                               :hasName "Roman Colonization of Dyrrachium" ;
+                               :hasStartDate "48 BC" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/RomanConquest
+:RomanConquest rdf:type owl:NamedIndividual ,
+                        :HistoricEvent ;
+               owl:sameAs :RomanExpansionIntollyria ;
+               :occurredIn :IllyriaRegion ;
+               :occurredOn :Date_3rdCenturyBC ;
+               :hasEventDuration "229–168 BC" ;
+               :hasName "Roman Conquest of Illyria" ;
+               :hasStartDate "229 BC" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/RomanExpansionIntollyria
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/RomanExpansionIntollyria
+:RomanExpansionIntollyria rdf:type owl:NamedIndividual ,
+                                   :HistoricEvent ;
+                          :occurredIn :IllyriaRegion ;
+                          :occurredOn :Date_3rdCenturyBC ;
+                          :hasEventDuration "3rd–2nd century BC" ;
+                          :hasName "Roman Expansion into Illyria" ;
+                          :hasStartDate "229 BC" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/RomanProvinceFormation
+:RomanProvinceFormation rdf:type owl:NamedIndividual ,
+                                 :HistoricEvent ;
+                        :occurredIn :DurresRegion ;
+                        :occurredOn <http://www.semanticweb.org/ana/ontologies/2025/4/albania#1st_century_BC> ;
+                        :hasEventDuration "27 BC–20 AD" ;
+                        :hasName "Formation of Roman Province of Illyricum" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/RozafaCastle
+:RozafaCastle rdf:type owl:NamedIndividual ,
+                       :CastleOrFortress ;
+              :associatedWithEvent :RomanConquest ,
+                                   :RomanExpansionIntollyria ;
+              :hasLocation :ShkoderRegion ;
+              :locatedIn :ShkoderRegion ;
+              :originatedFrom :Date_4thCenturyBC ;
+              :hasCreator "Illyrians" ;
+              :hasCulturalContext "Illyrian and Roman periods" ;
+              :hasCulturalHeritageStatus "National Monument of Albania" ;
+              :hasCulturalSignificance "Legendary fortress with mythological significance" ;
+              :hasDateOfDiscovery "4th century BC" ;
+              :hasName "Rozafa Castle" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/SaintMaryWithJesusIcon
+:SaintMaryWithJesusIcon rdf:type owl:NamedIndividual ,
+                                 :VisualArtwork ;
+                        :exhibitedIn :OnufriIconographicMuseum ;
+                        :hasLocation :Berat ;
+                        :isPartOf :BeratUNESCOSite ;
+                        :locatedIn :Berat ;
+                        :originatedFrom :Date_16thCentury ;
+                        :hasCreator "Onufri" ;
+                        :hasCulturalContext "Byzantine iconography in post-Byzantine Albania" ;
+                        :hasCulturalHeritageStatus "national religious artwork" ;
+                        :hasCulturalSignificance "religious icon used in Orthodox Christian worship" ;
+                        :hasDateOfDiscovery "1980" ;
+                        :hasMaterial "wood and tempera" ;
+                        :hasName "Saint Mary with Jesus" ;
+                        :hasPeriodOfUse "16-th century" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/SarandaRegion
+:SarandaRegion rdf:type owl:NamedIndividual ,
+                        :Region ;
+               :hasHistoricalPeriod :ModernPeriod ;
+               :hasLocationType "Region" ;
+               :hasName "Saranda Region" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/SarandaWarMemorial
+:SarandaWarMemorial rdf:type owl:NamedIndividual ,
+                             :Memorial ;
+                    :associatedWithEvent :WorldWarIILiberation ;
+                    :hasLocation :SarandaRegion ;
+                    :locatedIn :SarandaRegion ;
+                    :hasConstructionDate "1971-01-01T00:00:00"^^xsd:dateTime ;
+                    :hasCulturalContext "commemoration of martyrs who fell during the liberation of Saranda" ;
+                    :hasCulturalHeritageStatus "national cultural monument" ;
+                    :hasCulturalSignificance "honors those who died in the liberation of Saranda on October 9, 1944" ;
+                    :hasMaterial "stone and metal plaque" ;
+                    :hasName "Saranda War Memorial" ;
+                    :hasRestorationDate "1988-01-01T00:00:00"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/SelcaPoshtmeTombIII
+:SelcaPoshtmeTombIII rdf:type owl:NamedIndividual ,
+                              :TombOrBurialMound ;
+                     :associatedWithEvent :IllyrianRoyalBurials ;
+                     :hasLocation :PogradecRegion ;
+                     :isPartOf :SelcaUNESCOTentativeSite ;
+                     :locatedIn :PogradecRegion ;
+                     :originatedFrom :Date_3rdCenturyBC ;
+                     :hasCreator "Illyrian artisans under the Enchele tribe" ;
+                     :hasCulturalContext "Illyrian royal burial tradition with Hellenistic influences" ;
+                     :hasCulturalHeritageStatus "UNESCO Tentative List" ;
+                     :hasCulturalSignificance "Monumental rock-cut tomb featuring Ionic columns and rich grave goods" ;
+                     :hasDateOfDiscovery "1971" ;
+                     :hasName "Royal Tomb III of Selca e Poshtme" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/SelcaUNESCOTentativeSite
+:SelcaUNESCOTentativeSite rdf:type owl:NamedIndividual ,
+                                   :UNESCOSite ;
+                          :containsMonument :RockCutChambersSelca ;
+                          :hasName "Royal Tombs of Selca e Poshtme" ;
+                          :hasUNESCODesignation "Tentative List – Cultural Heritage" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Shkoder
+:Shkoder rdf:type owl:NamedIndividual ,
+                  :City ;
+         :hasHistoricalPeriod :OttomanPeriod ;
+         :hasLocationType "City" ;
+         :hasName "Shkoder" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ShkoderEnglishmansTower
+:ShkoderEnglishmansTower rdf:type owl:NamedIndividual ,
+                                  :ArchitecturalMonument ;
+                         :hasCity :Shkoder ;
+                         :hasLocation :Shkoder ,
+                                      :ShkoderRegion ;
+                         :locatedIn :Shkoder ,
+                                    :ShkoderRegion ;
+                         :hasCreator "Lord Alfred Paget" ;
+                         :hasCulturalContext "19th-century Protestant missionary architecture" ;
+                         :hasCulturalHeritageStatus "Cultural Monument of Albania" ;
+                         :hasCulturalSignificance "unique example of English-influenced architecture in Albania" ;
+                         :hasMaterial "stone" ;
+                         :hasName "The Englishman's Tower" ;
+                         :hasRestorationDate "2024-06-08T00:00:00"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ShkoderRegion
+:ShkoderRegion rdf:type owl:NamedIndividual ,
+                        :Region ;
+               :hasLocationType "Region" ;
+               :hasName "Shkoder Region" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ShnaNdojaLac
+:ShnaNdojaLac rdf:type owl:NamedIndividual ,
+                       :PilgrimageSite ;
+              :hasLocation :LacRegion ;
+              :locatedIn :LacRegion ;
+              :hasConstructionDate "1557-09-11T00:00:00"^^xsd:dateTime ;
+              :hasCulturalContext "Catholic pilgrimage tradition" ;
+              :hasCulturalHeritageStatus "Cultural Monument of Albania" ;
+              :hasCulturalSignificance "Major pilgrimage site attracting thousands annually" ;
+              :hasName "Church of Saint Anthony (Shna Ndoja)" ;
+              :hasReligion "Roman Catholic" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Skanderbeg
+:Skanderbeg rdf:type owl:NamedIndividual ,
+                     :ImportantPerson ;
+            :collaboratedWith :LekDukagjini ;
+            :participatedIn :SkanderbegResistance .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/SkanderbegMuseumKruje
+:SkanderbegMuseumKruje rdf:type owl:NamedIndividual ,
+                                :HistoricalMuseum ;
+                       :commemorates :GjergjKastriotiSkanderbeg ,
+                                     :Skanderbeg ;
+                       :hasLocation :Kruje ;
+                       :locatedIn :Kruje ;
+                       :hasArchitecturalStyle "Inspired by traditional Albanian stone towers and medieval Romanesque architecture" ;
+                       :hasConstructionDate "1982-11-01T00:00:00"^^xsd:dateTime ;
+                       :hasCreator "Architects Pirro Vaso, Pranvera Hoxha" ;
+                       :hasCulturalContext "Albanian national history and heritage" ;
+                       :hasCulturalHeritageStatus "National Museum of Albania" ;
+                       :hasCulturalSignificance "Dedicated to the national hero Skanderbeg and Albania's resistance against the Ottoman Empire" ;
+                       :hasName "National History Museum 'Gjergj Kastrioti Skënderbeu'" ;
+                       :hasWebsite "https://muzeumet-kruje.com/"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/SkanderbegResistance
+:SkanderbegResistance rdf:type owl:NamedIndividual ,
+                               :HistoricEvent ;
+                      :occurredIn :Kruje ;
+                      :occurredOn :Date_1443 ;
+                      :hasEventDuration "1443–1468" ;
+                      :hasName "Skanderbeg's Resistance against the Ottoman Empire" ;
+                      :hasStartDate "1443" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/SkanderbegSquareUNESCOSite
+:SkanderbegSquareUNESCOSite rdf:type owl:NamedIndividual ,
+                                     :UNESCOSite ;
+                            :containsMonument :SkanderbegStatueTirana ;
+                            :featuresBuilding :NationalHistoryMuseumTirana ;
+                            :hasName "Tirana’s Historical Center and Skanderbeg Square" ;
+                            :hasUNESCODesignation "Tentative List – Cultural Heritage" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/SkanderbegStatueKruje
+:SkanderbegStatueKruje rdf:type owl:NamedIndividual ,
+                                :Statue ;
+                       :associatedWithEvent :AlbanianResistanceAgainstOttomanEmpire ;
+                       :hasLocation :Kruje ;
+                       :locatedIn :Kruje ;
+                       :hasConstructionDate "1959-11-28T00:00:00"^^xsd:dateTime ;
+                       :hasCulturalContext "commemoration of national hero Gjergj Kastrioti Skënderbeu" ;
+                       :hasCulturalHeritageStatus "national cultural monument" ;
+                       :hasCulturalSignificance "symbol of Albanian resistance against the Ottoman Empire" ;
+                       :hasMaterial "bronze" ;
+                       :hasName "Skanderbeg Monument in Kruje" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/SkanderbegStatueTirana
+:SkanderbegStatueTirana rdf:type owl:NamedIndividual ,
+                                 :Statue ;
+                        :associatedWithEvent :AlbanianResistanceAgainstOttomanEmpire ;
+                        :hasCity :Tirana ;
+                        :hasLocation :Tirana ,
+                                     :TiranaRegion ;
+                        :locatedIn :Tirana ,
+                                   :TiranaRegion ;
+                        :hasConstructionDate "1968-01-01T00:00:00"^^xsd:dateTime ;
+                        :hasCreator "Odhise Paskali, Andrea Mano, Janaq Paço" ;
+                        :hasCulturalContext "commemoration of national hero Gjergj Kastrioti Skënderbeu" ;
+                        :hasCulturalHeritageStatus "national cultural monument" ;
+                        :hasCulturalSignificance "symbol of Albanian resistance against the Ottoman Empire" ;
+                        :hasMaterial "bronze on stone pedestal" ;
+                        :hasName "Skanderbeg Monument" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/SolomonMuseum
+:SolomonMuseum rdf:type owl:NamedIndividual ,
+                        :ThematicMuseum ;
+               :hasLocation :Berat ;
+               :locatedIn :Berat ;
+               :hasConstructionDate "2018-09-08T00:00:00"^^xsd:dateTime ;
+               :hasCreator "Simon Vrusho" ;
+               :hasCulturalContext "History of the Jewish community in Albania" ;
+               :hasCulturalHeritageStatus "National Museum of Albania" ;
+               :hasCulturalSignificance "Highlights Albania's unique role in protecting Jews during the Holocaust" ;
+               :hasName "Solomon Museum" ;
+               :hasWebsite "https://en.wikipedia.org/wiki/Solomon_Museum"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/StNaumMonastery
+:StNaumMonastery rdf:type owl:NamedIndividual ,
+                          :Monastery ;
+                 :hasLocation :PogradecRegion ;
+                 :locatedIn :PogradecRegion ;
+                 :hasArchitecturalStyle "Byzantine" ;
+                 :hasCulturalContext "Medieval Orthodox monastic architecture" ;
+                 :hasCulturalHeritageStatus "Cultural Heritage of Albania" ;
+                 :hasCulturalSignificance "Founded by Saint Naum; important pilgrimage site" ;
+                 :hasName "St. Naum Monastery" ;
+                 :hasReligion "Eastern Orthodox" ;
+                 :hasRestorationDate "1799-12-31T00:00:00"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/StNicholasChurchVoskopoja
+:StNicholasChurchVoskopoja rdf:type owl:NamedIndividual ,
+                                    :OrthodoxChurch ;
+                           :hasLocation :KorceRegion ;
+                           :locatedIn :KorceRegion ;
+                           :hasArchitecturalStyle "Post-Byzantine" ;
+                           :hasConstructionDate "1722-09-19T00:00:00"^^xsd:dateTime ;
+                           :hasCulturalContext "Renowned for its 18th-century frescoes and iconostasis" ;
+                           :hasCulturalHeritageStatus "Cultural Heritage of Albania" ;
+                           :hasCulturalSignificance "Post-Byzantine ecclesiastical architecture" ;
+                           :hasName "St. Nicholas Church" ;
+                           :hasReligion "Eastern Orthodox" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/StStephensCathedral
+:StStephensCathedral rdf:type owl:NamedIndividual ,
+                              :CatholicChurch ;
+                     :hasCity :Shkoder ;
+                     :hasLocation :Shkoder ;
+                     :locatedIn :Shkoder ;
+                     :hasArchitecturalStyle "Neoclassical" ;
+                     :hasConstructionDate "1867-01-01T00:00:00"^^xsd:dateTime ;
+                     :hasCulturalContext "Roman Catholic ecclesiastical architecture" ;
+                     :hasCulturalHeritageStatus "Cultural Heritage of Albania" ;
+                     :hasCulturalSignificance "Largest Catholic cathedral in Albania; symbol of Catholic heritage in Shkoder" ;
+                     :hasName "St. Stephen's Cathedral" ;
+                     :hasReligion "Roman Catholic" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Tepelene
+:Tepelene rdf:type owl:NamedIndividual ,
+                   :City ;
+          :hasHistoricalPeriod :OttomanPeriod ;
+          :hasLocationType "City" ;
+          :hasName "Tepelene" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Tirana
+:Tirana rdf:type owl:NamedIndividual ,
+                 :City ;
+        :hasHistoricalPeriod :ModernPeriod ;
+        :hasLocationType "City" ;
+        :hasName "Tirana" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/TiranaClockTower
+:TiranaClockTower rdf:type owl:NamedIndividual ,
+                           :ArchitecturalMonument ;
+                  :hasLocation :Tirana ;
+                  :locatedIn :Tirana ;
+                  :hasConstructionDate "1830-11-08T00:00:00"^^xsd:dateTime ;
+                  :hasCreator "Haxhi Et'hem Bey" ;
+                  :hasCulturalContext "Ottoman-era civic architecture" ;
+                  :hasCulturalHeritageStatus "cultural monument of Albania" ;
+                  :hasCulturalSignificance "symbol of Tirana's historical center" ;
+                  :hasMaterial "stone and brick" ;
+                  :hasName "Clock Tower of Tirana" ;
+                  :hasRestorationDate "2010-02-11T00:00:00"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/TiranaRegion
+:TiranaRegion rdf:type owl:NamedIndividual ,
+                       :Region ;
+              :hasLocationType "Region" ;
+              :hasName "Tirana Region" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Tropoje
+:Tropoje rdf:type owl:NamedIndividual ,
+                  :City ;
+         :hasHistoricalPeriod :ModernPeriod ;
+         :hasLocationType "City" ;
+         :hasName "Tropoje" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ValleEMyzeqese
+:ValleEMyzeqese rdf:type owl:NamedIndividual ,
+                         :FolkDance ;
+                :originatedFrom :Date_OttomanPeriod ;
+                :originatesFrom :FierReigon ;
+                :hasCulturalContext "Folk dance from central Albania, performed at weddings and festivals" ;
+                :hasCulturalHeritageStatus "Regional Intangible Cultural Heritage" ;
+                :hasCulturalSignificance "Represents harmony and grace; traditional in the Myzeqe region" ;
+                :hasName "Valle e Myzeqese" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/ValleETropojes
+:ValleETropojes rdf:type owl:NamedIndividual ,
+                         :FolkDance ;
+                :originatesFrom :Tropoje ;
+                :hasCulturalContext "Energetic northern Albanian folk dance with traditional garments and fast steps" ;
+                :hasCulturalHeritageStatus "National Intangible Cultural Heritage" ;
+                :hasCulturalSignificance "Preserved in cultural events and folklore festivals; symbol of Tropoja identity" ;
+                :hasName "Valle e Tropojes" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/VenetianTradeExpansion
+:VenetianTradeExpansion rdf:type owl:NamedIndividual ,
+                                 :HistoricEvent ;
+                        :occurredIn :DurresRegion ;
+                        :occurredOn :Date_14th15thCentury ;
+                        :hasEventDuration "14th–15th centuries" ;
+                        :hasName "Venetian Trade Expansion along Albanian Coast" ;
+                        :hasStartDate "1300" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/Vlora
+:Vlora rdf:type owl:NamedIndividual ,
+                :City ;
+       :hasHistoricalPeriod :IndependencePeriod ;
+       :hasLocationType "City" ;
+       :hasName "Vlora" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/VloraRegion
+:VloraRegion rdf:type owl:NamedIndividual ,
+                      :Region ;
+             :hasLocationType "Region" ;
+             :hasName "Vlora Region" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/VloreUNESCOTentativeSite
+:VloreUNESCOTentativeSite rdf:type owl:NamedIndividual ,
+                                   :UNESCOSite ;
+                          :containsMonument :IndependenceMonumentVlore ;
+                          :featuresBuilding :NationalIndependenceMuseumVlore ;
+                          :hasName "Historic Urban Complex of Vlore" ;
+                          :hasUNESCODesignation "Tentative List – Cultural" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/WorldWarII
+:WorldWarII rdf:type owl:NamedIndividual ,
+                     :HistoricEvent ;
+            owl:differentFrom :WorldWarIIResistance ;
+            :occurredIn :AlbaniaRegion ;
+            :occurredOn :Date_1939 ;
+            :hasEventDuration "1939–1945" ;
+            :hasName "World War II in Albania" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/WorldWarIILiberation
+:WorldWarIILiberation rdf:type owl:NamedIndividual ,
+                               :HistoricEvent ;
+                      :occurredIn :Tirana ;
+                      :occurredOn :Date_1943 ;
+                      :hasEventDuration "1943–1944" ;
+                      :hasName "Liberation of Albania in WWII" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/albania/WorldWarIIResistance
+:WorldWarIIResistance rdf:type owl:NamedIndividual ,
+                               :HistoricEvent ;
+                      :occurredIn :Shkoder ;
+                      :occurredOn :Date_1939 ;
+                      :hasEventDuration "1939–1944" ;
+                      :hasName "Albanian Resistance during World War II" .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AncientCity
+                :CastleOrFortress
+                :RockArtOrInscription
+                :TombOrBurialMound
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :ArchaeologyMuseum
+                :ArtMuseum
+                :CulturalMuseum
+                :HistoricalMuseum
+                :ThematicMuseum
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :ArchitecturalMonument
+                :Memorial
+                :Statue
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CatholicChurch
+                :Monastery
+                :Mosque
+                :OrthodoxChurch
+                :PilgrimageSite
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CulturalFestival
+                :FolkDance
+                :FolkMusic
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Jewelry
+                :Manuscript
+                :Pottery
+                :VisualArtwork
+                :Weapon
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
