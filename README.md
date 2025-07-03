@@ -1,4 +1,4 @@
-# 🇦🇱 Albanian Cultural Heritage Ontology Project
+#  Albanian Cultural Heritage Ontology Project
 
 This project aims to digitally preserve and model the **Intangible Cultural Heritage (ICH) of Albania** using Semantic Web technologies, Natural Language Processing (NLP), and a browser-based interface for querying and exploration.
 
