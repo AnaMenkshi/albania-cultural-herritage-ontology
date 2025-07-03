@@ -1,0 +1,1367 @@
+@prefix : <http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/> .
+
+<http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8> rdf:type owl:Ontology .
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/associatedWithEvent
+:associatedWithEvent rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf owl:topObjectProperty ;
+                     rdfs:domain :CultureEntity ;
+                     rdfs:range :HistoricEvent .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/collaboratedWith
+:collaboratedWith rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdf:type owl:SymmetricProperty ;
+                  rdfs:domain :ImportantPerson ;
+                  rdfs:range :ImportantPerson .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/commemorates
+:commemorates rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain :Museum ;
+              rdfs:range :ImportantPerson .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/containsMonument
+:containsMonument rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  owl:inverseOf :isPartOf ;
+                  rdfs:domain :UNESCOSite ;
+                  rdfs:range :Monument .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/datedFrom
+:datedFrom rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:domain :ArchaeologicalSite ;
+           rdfs:range :Date .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/displays
+:displays rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          owl:inverseOf :exhibitedIn ;
+          rdfs:domain :Museum ;
+          rdfs:range :Artefact .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/exhibitedIn
+:exhibitedIn rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :Artefact ;
+             rdfs:range :Museum .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/featuresBuilding
+:featuresBuilding rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdfs:domain :UNESCOSite ;
+                  rdfs:range :ReligiousAndCulturalComplex .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/hasCity
+:hasCity rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :locatedIn ;
+         rdfs:domain :CultureEntity ;
+         rdfs:range :City .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/hasHistoricalPeriod
+:hasHistoricalPeriod rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf owl:topObjectProperty ;
+                     rdfs:domain :Location ;
+                     rdfs:range :Date .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/hasLocation
+:hasLocation rdf:type owl:ObjectProperty ;
+             owl:equivalentProperty :locatedIn ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :CultureEntity ;
+             rdfs:range :Location .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/hasSubLocation
+:hasSubLocation rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdf:type owl:InverseFunctionalProperty ,
+                         owl:TransitiveProperty ;
+                rdfs:domain :Location ;
+                rdfs:range :Location .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/isPartOf
+:isPartOf rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdf:type owl:AsymmetricProperty ,
+                   owl:IrreflexiveProperty ;
+          rdfs:domain :CultureEntity ;
+          rdfs:range :UNESCOSite .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/locatedIn
+:locatedIn rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:domain :CultureEntity ;
+           rdfs:range :Location .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/occurredIn
+:occurredIn rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain :HistoricEvent ;
+            rdfs:range :Location .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/occurredOn
+:occurredOn rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain :HistoricEvent ;
+            rdfs:range :Date .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/originatedFrom
+:originatedFrom rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain :Artefact ;
+                rdfs:range :Date .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/originatesFrom
+:originatesFrom rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain :TraditionalPractice ;
+                rdfs:range :Location .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/participatedIn
+:participatedIn rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain :ImportantPerson ;
+                rdfs:range :HistoricEvent .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/sameAs
+:sameAs rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf owl:topObjectProperty ;
+        rdf:type owl:SymmetricProperty ,
+                 owl:TransitiveProperty ,
+                 owl:ReflexiveProperty ;
+        rdfs:domain :ImportantPerson ;
+        rdfs:range :ImportantPerson .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/surroundsSite
+:surroundsSite rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:domain :Location ;
+               rdfs:range :ArchaeologicalSite .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/hasArchitecturalStyle
+:hasArchitecturalStyle rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf owl:topDataProperty ;
+                       rdfs:domain [ rdf:type owl:Class ;
+                                     owl:unionOf ( :Museum
+                                                   :ReligiousAndCulturalComplex
+                                                 )
+                                   ] ;
+                       rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/hasConstructionDate
+:hasConstructionDate rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf owl:topDataProperty ;
+                     rdfs:domain [ rdf:type owl:Class ;
+                                   owl:unionOf ( :Monument
+                                                 :ReligiousAndCulturalComplex
+                                               )
+                                 ] ;
+                     rdfs:range xsd:date .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/hasCreator
+:hasCreator rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdf:type owl:FunctionalProperty ;
+            rdfs:domain :CultureEntity ;
+            rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/hasCulturalContext
+:hasCulturalContext rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:domain :CultureEntity ;
+                    rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/hasCulturalHeritageStatus
+:hasCulturalHeritageStatus rdf:type owl:DatatypeProperty ;
+                           rdfs:subPropertyOf owl:topDataProperty ;
+                           rdfs:domain :CultureEntity ;
+                           rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/hasCulturalSignificance
+:hasCulturalSignificance rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf owl:topDataProperty ;
+                         rdfs:domain :CultureEntity ;
+                         rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/hasDateOfDiscovery
+:hasDateOfDiscovery rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:domain [ rdf:type owl:Class ;
+                                  owl:unionOf ( :ArchaeologicalSite
+                                                :Artefact
+                                              )
+                                ] ;
+                    rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/hasEventDuration
+:hasEventDuration rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:domain :HistoricEvent ;
+                  rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/hasExactDate
+:hasExactDate rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :Date ;
+              rdfs:range xsd:date .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/hasLabelDate
+:hasLabelDate rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :Date ;
+              rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/hasLanguage
+:hasLanguage rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Manuscript ;
+             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/hasLocationType
+:hasLocationType rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdfs:domain :Location ;
+                 rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/hasMaterial
+:hasMaterial rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( :Artefact
+                                         :Monument
+                                       )
+                         ] ;
+             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/hasName
+:hasName rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdf:type owl:FunctionalProperty ;
+         rdfs:domain [ rdf:type owl:Class ;
+                       owl:unionOf ( :CultureEntity
+                                     :HistoricEvent
+                                     :ImportantPerson
+                                     :Location
+                                     :UNESCOSite
+                                   )
+                     ] ;
+         rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/hasPeriodOfUse
+:hasPeriodOfUse rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :Artefact ;
+                rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/hasReligion
+:hasReligion rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :ReligiousAndCulturalComplex ;
+             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/hasRestorationDate
+:hasRestorationDate rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:domain [ rdf:type owl:Class ;
+                                  owl:unionOf ( :Artefact
+                                                :Monument
+                                              )
+                                ] ;
+                    rdfs:range xsd:date .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/hasStartDate
+:hasStartDate rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :HistoricEvent ;
+              rdfs:range xsd:date .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/hasUNESCODesignation
+:hasUNESCODesignation rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf owl:topDataProperty ;
+                      rdfs:domain :UNESCOSite ;
+                      rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/hasWebsite
+:hasWebsite rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdf:type owl:FunctionalProperty ;
+            rdfs:domain :Museum ;
+            rdfs:range xsd:anyURI .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/AncientCity
+:AncientCity rdf:type owl:Class ;
+             rdfs:subClassOf :ArchaeologicalSite .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/ArchaeologicalSite
+:ArchaeologicalSite rdf:type owl:Class ;
+                    owl:equivalentClass [ rdf:type owl:Class ;
+                                          owl:unionOf ( :AncientCity
+                                                        :CastleOrFortress
+                                                        :RockArtOrInscription
+                                                        :TombOrBurialMound
+                                                      )
+                                        ] ;
+                    rdfs:subClassOf :CultureEntity ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :datedFrom ;
+                                      owl:someValuesFrom :Date
+                                    ] ;
+                    owl:disjointWith :Artefact ,
+                                     :Monument ,
+                                     :Museum ,
+                                     :ReligiousAndCulturalComplex ,
+                                     :TraditionalPractice ;
+                    owl:disjointUnionOf ( :AncientCity
+                                          :CastleOrFortress
+                                          :RockArtOrInscription
+                                          :TombOrBurialMound
+                                        ) .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/ArchaeologyMuseum
+:ArchaeologyMuseum rdf:type owl:Class ;
+                   rdfs:subClassOf :Museum .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/ArchitecturalMonument
+:ArchitecturalMonument rdf:type owl:Class ;
+                       rdfs:subClassOf :Monument .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/ArtMuseum
+:ArtMuseum rdf:type owl:Class ;
+           rdfs:subClassOf :Museum .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Artefact
+:Artefact rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Class ;
+                                owl:unionOf ( :Jewelry
+                                              :Manuscript
+                                              :Pottery
+                                              :VisualArtwork
+                                              :Weapon
+                                            )
+                              ] ;
+          rdfs:subClassOf :CultureEntity ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :originatedFrom ;
+                            owl:someValuesFrom :Date
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPeriodOfUse ;
+                            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onDataRange xsd:string
+                          ] ;
+          owl:disjointWith :Monument ,
+                           :Museum ,
+                           :ReligiousAndCulturalComplex ,
+                           :TraditionalPractice ;
+          owl:disjointUnionOf ( :Jewelry
+                                :Manuscript
+                                :Pottery
+                                :VisualArtwork
+                                :Weapon
+                              ) .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/CastleOrFortress
+:CastleOrFortress rdf:type owl:Class ;
+                  rdfs:subClassOf :ArchaeologicalSite .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/CatholicChurch
+:CatholicChurch rdf:type owl:Class ;
+                rdfs:subClassOf :ReligiousAndCulturalComplex .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/City
+:City rdf:type owl:Class ;
+      rdfs:subClassOf :Location ;
+      owl:disjointWith :Region .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/CulturalFestival
+:CulturalFestival rdf:type owl:Class ;
+                  rdfs:subClassOf :TraditionalPractice .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/CulturalMuseum
+:CulturalMuseum rdf:type owl:Class ;
+                rdfs:subClassOf :Museum .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/CultureEntity
+:CultureEntity rdf:type owl:Class ;
+               owl:disjointWith :Date ,
+                                :HistoricEvent ,
+                                :ImportantPerson ,
+                                :Location ,
+                                :UNESCOSite .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Date
+:Date rdf:type owl:Class ;
+      owl:disjointWith :HistoricEvent ,
+                       :ImportantPerson ,
+                       :Location ,
+                       :UNESCOSite .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/FolkDance
+:FolkDance rdf:type owl:Class ;
+           rdfs:subClassOf :TraditionalPractice .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/FolkMusic
+:FolkMusic rdf:type owl:Class ;
+           rdfs:subClassOf :TraditionalPractice .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/HistoricEvent
+:HistoricEvent rdf:type owl:Class ;
+               rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                 owl:onProperty :occurredIn ;
+                                 owl:someValuesFrom :Location
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :occurredOn ;
+                                 owl:someValuesFrom :Date
+                               ] ;
+               owl:disjointWith :ImportantPerson ,
+                                :Location ,
+                                :UNESCOSite .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/HistoricalMuseum
+:HistoricalMuseum rdf:type owl:Class ;
+                  rdfs:subClassOf :Museum .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/ImportantPerson
+:ImportantPerson rdf:type owl:Class ;
+                 owl:disjointWith :Location ,
+                                  :UNESCOSite .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Jewelry
+:Jewelry rdf:type owl:Class ;
+         rdfs:subClassOf :Artefact .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Location
+:Location rdf:type owl:Class ;
+          owl:disjointWith :UNESCOSite .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Manuscript
+:Manuscript rdf:type owl:Class ;
+            rdfs:subClassOf :Artefact .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Memorial
+:Memorial rdf:type owl:Class ;
+          rdfs:subClassOf :Monument .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Monastery
+:Monastery rdf:type owl:Class ;
+           rdfs:subClassOf :ReligiousAndCulturalComplex .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Monument
+:Monument rdf:type owl:Class ;
+          rdfs:subClassOf :CultureEntity ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :commemorates ;
+                            owl:allValuesFrom :ImportantPerson
+                          ] ;
+          owl:disjointWith :Museum ,
+                           :ReligiousAndCulturalComplex ,
+                           :TraditionalPractice .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Mosque
+:Mosque rdf:type owl:Class ;
+        rdfs:subClassOf :ReligiousAndCulturalComplex .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Museum
+:Museum rdf:type owl:Class ;
+        rdfs:subClassOf :CultureEntity ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :displays ;
+                          owl:someValuesFrom :Artefact
+                        ] ;
+        owl:disjointWith :ReligiousAndCulturalComplex ,
+                         :TraditionalPractice .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/OrthodoxChurch
+:OrthodoxChurch rdf:type owl:Class ;
+                rdfs:subClassOf :ReligiousAndCulturalComplex .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/PilgrimageSite
+:PilgrimageSite rdf:type owl:Class ;
+                rdfs:subClassOf :ReligiousAndCulturalComplex .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Pottery
+:Pottery rdf:type owl:Class ;
+         rdfs:subClassOf :Artefact .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Region
+:Region rdf:type owl:Class ;
+        rdfs:subClassOf :Location .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/ReligiousAndCulturalComplex
+:ReligiousAndCulturalComplex rdf:type owl:Class ;
+                             owl:equivalentClass [ rdf:type owl:Class ;
+                                                   owl:unionOf ( :CatholicChurch
+                                                                 :Monastery
+                                                                 :Mosque
+                                                                 :OrthodoxChurch
+                                                                 :PilgrimageSite
+                                                               )
+                                                 ] ;
+                             rdfs:subClassOf :CultureEntity ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :hasLocation ;
+                                               owl:someValuesFrom :Location
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :hasLocation ;
+                                               owl:allValuesFrom :Location
+                                             ] ;
+                             owl:disjointWith :TraditionalPractice ;
+                             owl:disjointUnionOf ( :CatholicChurch
+                                                   :Monastery
+                                                   :Mosque
+                                                   :OrthodoxChurch
+                                                   :PilgrimageSite
+                                                 ) .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/RockArtOrInscription
+:RockArtOrInscription rdf:type owl:Class ;
+                      rdfs:subClassOf :ArchaeologicalSite .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Statue
+:Statue rdf:type owl:Class ;
+        rdfs:subClassOf :Monument .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/ThematicMuseum
+:ThematicMuseum rdf:type owl:Class ;
+                rdfs:subClassOf :Museum .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/TombOrBurialMound
+:TombOrBurialMound rdf:type owl:Class ;
+                   rdfs:subClassOf :ArchaeologicalSite .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/TraditionalPractice
+:TraditionalPractice rdf:type owl:Class ;
+                     rdfs:subClassOf :CultureEntity ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :originatesFrom ;
+                                       owl:someValuesFrom :Location
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :originatesFrom ;
+                                       owl:allValuesFrom :Location
+                                     ] .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/UNESCOSite
+:UNESCOSite rdf:type owl:Class ;
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty [ owl:inverseOf :isPartOf
+                                             ] ;
+                              owl:someValuesFrom :CultureEntity
+                            ] .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/VisualArtwork
+:VisualArtwork rdf:type owl:Class ;
+               rdfs:subClassOf :Artefact .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Weapon
+:Weapon rdf:type owl:Class ;
+        rdfs:subClassOf :Artefact .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/AlbanianRevoltsAgainstOttoman
+:AlbanianRevoltsAgainstOttoman rdf:type owl:NamedIndividual ,
+                                        :HistoricEvent .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/AmantiaAncientCity
+:AmantiaAncientCity rdf:type owl:NamedIndividual ,
+                             :AncientCity ;
+                    :associatedWithEvent :IllyrianHellenization ;
+                    :locatedIn :VloraRegion ;
+                    :originatedFrom :Date_5thCenturyBC ;
+                    :hasCreator "\"Illyrians\"" ;
+                    :hasCulturalContext "\"Illyrian fortified city with Hellenistic influence\"" ;
+                    :hasCulturalHeritageStatus "\"Protected National Monument\"" ;
+                    :hasCulturalSignificance "\"Religious and political center of southern Illyria\"" ;
+                    :hasDateOfDiscovery "\"1955\"" ;
+                    :hasName "\"Amantia\"" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/ApolloniaAncientCity
+:ApolloniaAncientCity rdf:type owl:NamedIndividual ,
+                               :AncientCity ;
+                      :associatedWithEvent :RomanExpansionIntollyria ;
+                      :isPartOf :ApolloniaUNESCOSite ;
+                      :locatedIn :FierReigon ;
+                      :originatedFrom :Date_HellenisticPeriod ;
+                      :hasCreator "\"Greek colonists from Corinth and Corfu\"" ;
+                      :hasCulturalContext "\"Greek colonial city in Illyria\"" ;
+                      :hasCulturalHeritageStatus "\"UNESCO Tentative List\"" ;
+                      :hasCulturalSignificance "\"Commercial and cultural hub during Hellenistic and Roman periods\"" ;
+                      :hasDateOfDiscovery "\"1806\"" ;
+                      :hasName "\"Apollonia\"" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/ApolloniaGoldEarrings
+:ApolloniaGoldEarrings rdf:type owl:NamedIndividual ,
+                                :Jewelry ;
+                       :exhibitedIn :NationalHistoryMuseumTirana ;
+                       :originatedFrom :Date_HellenisticPeriod ;
+                       :hasCreator "\"Gold Earrings from Apollonia\"" ;
+                       :hasCulturalContext "\"jewlery used in ancient times\"" ;
+                       :hasCulturalSignificance "\"Reflects Hellenistic artistic influence in Illyrian territories\"" ;
+                       :hasDateOfDiscovery "\"1961-06-03\"" ;
+                       :hasMaterial "\"gold\"" ;
+                       :hasPeriodOfUse "\"3rd–2nd century BC\"" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/ApolloniaRuins
+:ApolloniaRuins rdf:type owl:NamedIndividual ,
+                         :Monument .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/ApolloniaUNESCOSite
+:ApolloniaUNESCOSite rdf:type owl:NamedIndividual ,
+                              :UNESCOSite ;
+                     :containsMonument :ApolloniaRuins .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/ArchaeologicalMuseumKorce
+:ArchaeologicalMuseumKorce rdf:type owl:NamedIndividual ,
+                                    :ArchaeologyMuseum .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/AscensionElijahProphetIcon
+:AscensionElijahProphetIcon rdf:type owl:NamedIndividual ,
+                                     :VisualArtwork ;
+                            :exhibitedIn :OnufriIconographicMuseum ;
+                            :isPartOf :BeratUNESCOSite ;
+                            :locatedIn :Berat ;
+                            :originatedFrom :Date_1929 ;
+                            :hasCreator "\"Agathangjel Mbrica\"" ;
+                            :hasCulturalContext "\"20-th century Albanian religious art\"" ;
+                            :hasCulturalHeritageStatus "\"museum-preserved religious artwork\"" ;
+                            :hasCulturalSignificance "\"religious icon from a silversmith’s collection\"" ;
+                            :hasDateOfDiscovery "\"1929\"" ;
+                            :hasMaterial "\"wood and tempera\"" ;
+                            :hasName "\"Ascension of Elijah Prophet\"" ;
+                            :hasPeriodOfUse "\"1929\"" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Berat
+:Berat rdf:type owl:NamedIndividual ,
+                :City .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/BeratCastle
+:BeratCastle rdf:type owl:NamedIndividual ,
+                      :CastleOrFortress ;
+             :associatedWithEvent :ByzantineDefense ;
+             :isPartOf :BeratUNESCOSite ;
+             :locatedIn :BeratRegion ;
+             :originatedFrom :Date_4thCenturyBC ;
+             :hasCreator "\"Illyrians\"" ;
+             :hasCulturalContext "\"Castle of Illyrian, Byzantine, and Ottoman periods\"" ;
+             :hasCulturalHeritageStatus "\"Part of UNESCO World Heritage Site\"" ;
+             :hasCulturalSignificance "\"Historical center with continuous habitation\"" ;
+             :hasDateOfDiscovery "\"4th century BC\"" ;
+             :hasName "\"Berat Castle\"" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/BeratRegion
+:BeratRegion rdf:type owl:NamedIndividual ,
+                      :Region .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/BeratUNESCOSite
+:BeratUNESCOSite rdf:type owl:NamedIndividual ,
+                          :UNESCOSite .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/ButrintAncientCity
+:ButrintAncientCity rdf:type owl:NamedIndividual ,
+                             :AncientCity ;
+                    :associatedWithEvent :RomanProvinceFormation ;
+                    :isPartOf :ButrintUNESCOSite ;
+                    :locatedIn :ButrintAncientCity ;
+                    :originatedFrom :Date_HellenisticPeriod ;
+                    :hasCreator "\"Greek settlers from Corfu “" ;
+                    :hasCulturalContext "\"Multi-layered heritage: Greek, Roman, Byzantine, and Venetian\"" ;
+                    :hasCulturalHeritageStatus "\"UNESCO World Heritage Site (1992)\"" ;
+                    :hasCulturalSignificance "\"Exceptional urban archaeological site with a continuous history\"" ;
+                    :hasDateOfDiscovery "\"1928\"" ;
+                    :hasName "\"Butrint\"" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/ButrintUNESCOSite
+:ButrintUNESCOSite rdf:type owl:NamedIndividual ,
+                            :UNESCOSite .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/ByzantineDefense
+:ByzantineDefense rdf:type owl:NamedIndividual ,
+                           :HistoricEvent .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/CodexBeratinus1
+:CodexBeratinus1 rdf:type owl:NamedIndividual ,
+                          :Manuscript ;
+                 :exhibitedIn :OnufriIconographicMuseum ;
+                 :isPartOf :BeratUNESCOSite ;
+                 :locatedIn :Berat ;
+                 :originatedFrom :Date_6thCentury ;
+                 :hasCreator "\"unknown Byzantine scribe\"" ;
+                 :hasCulturalContext "\"Byzantine Gospel manuscript\"" ;
+                 :hasCulturalHeritageStatus "\"UNESCO Memory of the World Register\"" ;
+                 :hasCulturalSignificance "\"UNESCO-registered early Christian codex\"" ;
+                 :hasDateOfDiscovery "\"rediscovered in 1868\"" ;
+                 :hasLanguage "\"Greek\"" ;
+                 :hasMaterial "\"purple-dyed parchment\"" ;
+                 :hasName "\"Codex Purpureus Beratinus I\"" ;
+                 :hasPeriodOfUse "\"6th century\"" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Date_12thCentury
+:Date_12thCentury rdf:type owl:NamedIndividual ,
+                           :Date .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Date_1462
+:Date_1462 rdf:type owl:NamedIndividual ,
+                    :Date .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Date_14th15thCentury
+:Date_14th15thCentury rdf:type owl:NamedIndividual ,
+                               :Date .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Date_1555
+:Date_1555 rdf:type owl:NamedIndividual ,
+                    :Date .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Date_16thCentury
+:Date_16thCentury rdf:type owl:NamedIndividual ,
+                           :Date .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Date_18thCentury
+:Date_18thCentury rdf:type owl:NamedIndividual ,
+                           :Date .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Date_1929
+:Date_1929 rdf:type owl:NamedIndividual ,
+                    :Date .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Date_4thCenturyBC
+:Date_4thCenturyBC rdf:type owl:NamedIndividual ,
+                            :Date .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Date_5thCenturyBC
+:Date_5thCenturyBC rdf:type owl:NamedIndividual ,
+                            :Date .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Date_6thCentury
+:Date_6thCentury rdf:type owl:NamedIndividual ,
+                          :Date .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Date_6thCenturyBC
+:Date_6thCenturyBC rdf:type owl:NamedIndividual ,
+                            :Date .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Date_8thCenturyBC
+:Date_8thCenturyBC rdf:type owl:NamedIndividual ,
+                            :Date .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Date_HellenisticPeriod
+:Date_HellenisticPeriod rdf:type owl:NamedIndividual ,
+                                 :Date .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Date_LateNeolithic
+:Date_LateNeolithic rdf:type owl:NamedIndividual ,
+                             :Date .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Date_Mid6thCenturyBC
+:Date_Mid6thCenturyBC rdf:type owl:NamedIndividual ,
+                               :Date .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/DevollRegion
+:DevollRegion rdf:type owl:NamedIndividual ,
+                       :Region .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/DevollianPottery
+:DevollianPottery rdf:type owl:NamedIndividual ,
+                           :Pottery ;
+                  :exhibitedIn :NationalHistoryMuseumTirana ;
+                  :locatedIn :DevollRegion ;
+                  :originatedFrom :Date_8thCenturyBC ;
+                  :hasCulturalContext "\"Illyrian culture of the Devoll Valley\"" ;
+                  :hasCulturalHeritageStatus "\"archaeological cultural object\"" ;
+                  :hasCulturalSignificance "\"regional Illyrian ceramic tradition\"" ;
+                  :hasMaterial "\"clay\"" ;
+                  :hasName "\"Devollian Pottery\"" ;
+                  :hasPeriodOfUse "\"Bronze and Iron Age\"" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Elbasan
+:Elbasan rdf:type owl:NamedIndividual ,
+                  :City .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/ElbasanGospelManuscript
+:ElbasanGospelManuscript rdf:type owl:NamedIndividual ,
+                                  :Manuscript ;
+                         :exhibitedIn :NationalHistoryMuseumTirana ;
+                         :locatedIn :Elbasan ;
+                         :originatedFrom :Date_18thCentury ;
+                         :hasCreator "\"anonymous Orthodox scholar\"" ;
+                         :hasCulturalContext "\"Christian liturgical texts in the Elbasan alphabet\"" ;
+                         :hasCulturalHeritageStatus "\"Rare script heritage\"" ;
+                         :hasCulturalSignificance "\"rare religious manuscript in a unique Albanian script\"" ;
+                         :hasDateOfDiscovery "\"1911\"" ;
+                         :hasLanguage "\"Albanian\"" ;
+                         :hasMaterial "\"paper\"" ;
+                         :hasName "\"Gospel Manuscript in Elbasan Script\"" ;
+                         :hasPeriodOfUse "\"18-th century\"" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/EvangelismIconBerat
+:EvangelismIconBerat rdf:type owl:NamedIndividual ,
+                              :VisualArtwork ;
+                     :exhibitedIn :OnufriIconographicMuseum ;
+                     :isPartOf :BeratUNESCOSite ;
+                     :locatedIn :Berat ;
+                     :originatedFrom :Date_14th15thCentury ;
+                     :hasCreator "\"anonymous\"" ;
+                     :hasCulturalContext "\"Byzantine iconography in medieval Albania\"" ;
+                     :hasCulturalHeritageStatus "\"museum-preserved Orthodox icon\"" ;
+                     :hasCulturalSignificance "\"religious icon depicting the Annunciation of Mary\"" ;
+                     :hasMaterial "\"wood and tempera\"" ;
+                     :hasName "\"Evangelism\"" ;
+                     :hasPeriodOfUse "\"14th – 15th century\"" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/FierReigon
+:FierReigon rdf:type owl:NamedIndividual ,
+                     :Region .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/FormulaEPagezimit
+:FormulaEPagezimit rdf:type owl:NamedIndividual ,
+                            :Manuscript ;
+                   :exhibitedIn :NationalHistoryMuseumTirana ;
+                   :originatedFrom :Date_1462 ;
+                   :hasCreator "”Pal Engjelli”" ;
+                   :hasCulturalContext "\"Catholic liturgical tradition in medieval Albania\"" ;
+                   :hasCulturalHeritageStatus "\"liturgical linguistic heritage\"" ;
+                   :hasCulturalSignificance "\"earliest evidence of liturgical Albanian writing\"" ;
+                   :hasDateOfDiscovery "\"1915\"" ;
+                   :hasLanguage "\"15-th century\"" ;
+                   :hasName "\"Formula e pagezimit\"" ,
+                            "\"parchment\"" ;
+                   :hasPeriodOfUse "\"15-th century\"" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/GjirokasterCastle
+:GjirokasterCastle rdf:type owl:NamedIndividual ,
+                            :CastleOrFortress ;
+                   :associatedWithEvent :OttomanExpansion ;
+                   :isPartOf :GjirokasterUNESCOSite ;
+                   :locatedIn :GjirokasterRegion ;
+                   :originatedFrom :Date_12thCentury ;
+                   :hasCreator "\"Byzantine Empire\"" ;
+                   :hasCulturalContext "\"Byzantine and Ottoman periods\"" ;
+                   :hasCulturalHeritageStatus "\"Part of UNESCO World Heritage Site\"" ;
+                   :hasCulturalSignificance "\"Strategic fortress overlooking the Drino Valley\"" ;
+                   :hasDateOfDiscovery "\"12-th century\"" ;
+                   :hasName "Gjirokaster Castle" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/GjirokasterRegion
+:GjirokasterRegion rdf:type owl:NamedIndividual ,
+                            :Region .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/GjirokasterUNESCOSite
+:GjirokasterUNESCOSite rdf:type owl:NamedIndividual ,
+                                :UNESCOSite .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/GjonBuzukuMeshari
+:GjonBuzukuMeshari rdf:type owl:NamedIndividual ,
+                            :Manuscript ;
+                   :exhibitedIn :NationalHistoryMuseumTirana ;
+                   :locatedIn :Tirana ;
+                   :originatedFrom :Date_1555 ;
+                   :hasCreator "\"Gjon Buzuku\"" ;
+                   :hasCulturalContext "\"Albanian Catholic heritage\"" ;
+                   :hasCulturalHeritageStatus "\"National Treasure of Albania\"" ;
+                   :hasCulturalSignificance "\"first known book written in the Albanian language\"" ;
+                   :hasDateOfDiscovery "\"1740\"" ;
+                   :hasLanguage "\"Albanian (Gheg dialect, Latin alphabet)\"" ;
+                   :hasMaterial "\"parchment\"" ;
+                   :hasName "\"Meshari\"" ;
+                   :hasPeriodOfUse "\"16-th century\"" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/IllyrianHellenization
+:IllyrianHellenization rdf:type owl:NamedIndividual ,
+                                :HistoricEvent .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/IllyrianHelmet
+:IllyrianHelmet rdf:type owl:NamedIndividual ,
+                         :Weapon ;
+                :associatedWithEvent :IllyrianWars ;
+                :exhibitedIn :NationalHistoryMuseumTirana ;
+                :locatedIn :Tirana ;
+                :originatedFrom :Date_6thCenturyBC ;
+                :hasCreator "\"Illyrian\"" ;
+                :hasCulturalContext "\"used by Illyrian tribes in ancient Albania\"" ;
+                :hasCulturalHeritageStatus "\"archaeological heritage of Albania\"" ;
+                :hasCulturalSignificance "\"iconic symbol of Illyrian warrior culture\"" ;
+                :hasDateOfDiscovery "\"1958\"" ;
+                :hasMaterial "\"bronze\"" ;
+                :hasName "\"Illyrian Bronze Helmet\"" ;
+                :hasPeriodOfUse "\"6th–3rd century BC\"" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/IllyrianWars
+:IllyrianWars rdf:type owl:NamedIndividual ,
+                       :HistoricEvent .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/KorceRegion
+:KorceRegion rdf:type owl:NamedIndividual ,
+                      :Region .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/KrujeFortress
+:KrujeFortress rdf:type owl:NamedIndividual ,
+                        :CastleOrFortress ;
+               :associatedWithEvent :SkanderbegResistance ;
+               :locatedIn :KrujeRegion ;
+               :originatedFrom :Date_12thCentury ;
+               :hasCreator "\"Medieval Albanian nobility\"" ;
+               :hasCulturalContext "\"Medieval Albanian resistance against the Ottoman Empire\"" ;
+               :hasCulturalHeritageStatus "\"National Monument of Albania\"" ;
+               :hasCulturalSignificance "\"Center of Skanderbeg's rebellion\"" ;
+               :hasDateOfDiscovery "\"1190\"" ;
+               :hasName "\"Kruje Fortress\"" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/KrujeRegion
+:KrujeRegion rdf:type owl:NamedIndividual ,
+                      :Region .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/LastSupperIconVokopol
+:LastSupperIconVokopol rdf:type owl:NamedIndividual ,
+                                :VisualArtwork ;
+                       :exhibitedIn :OnufriIconographicMuseum ;
+                       :isPartOf :BeratUNESCOSite ;
+                       :locatedIn :Berat ;
+                       :originatedFrom :Date_18thCentury ;
+                       :hasCreator "\"anonymous\"" ;
+                       :hasCulturalContext "\"Orthodox iconography in Ottoman-era Albania\"" ;
+                       :hasCulturalHeritageStatus "\"museum-preserved religious artwork\"" ;
+                       :hasCulturalSignificance "\"religious icon depicting the Last Supper of Christ\"" ;
+                       :hasDateOfDiscovery "\"19-th century\"" ;
+                       :hasMaterial "\"wood and tempera\"" ;
+                       :hasName "\"Last Supper\"" ;
+                       :hasPeriodOfUse "\"late 18th century\"" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/MotherGoddessVesselKamnik
+:MotherGoddessVesselKamnik rdf:type owl:NamedIndividual ,
+                                    :VisualArtwork ;
+                           :exhibitedIn :ArchaeologicalMuseumKorce ;
+                           :locatedIn :KorceRegion ;
+                           :hasCreator "\"prehistoric Illyrian community\"" ;
+                           :hasCulturalContext "\"Late Neolithic period, prehistoric art\"" ;
+                           :hasCulturalHeritageStatus "\"prehistoric archaeological artefact\"" ;
+                           :hasCulturalSignificance "" ;
+                           :hasDateOfDiscovery "\"1982\"" ;
+                           :hasMaterial "\"ceramic\"" ;
+                           :hasName "\"Mother Goddess Anthropomorphic Vessel\"" ;
+                           :hasPeriodOfUse "\"Late Neolithic – 4th millennium BC\"" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/NationalHistoryMuseumTirana
+:NationalHistoryMuseumTirana rdf:type owl:NamedIndividual ,
+                                      :HistoricalMuseum .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/OnufriIconographicMuseum
+:OnufriIconographicMuseum rdf:type owl:NamedIndividual ,
+                                   :ArtMuseum .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/OttomanExpansion
+:OttomanExpansion rdf:type owl:NamedIndividual ,
+                           :HistoricEvent .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/OttomanFlintlockRifle
+:OttomanFlintlockRifle rdf:type owl:NamedIndividual ,
+                                :Weapon ;
+                       :associatedWithEvent :AlbanianRevoltsAgainstOttoman ;
+                       :exhibitedIn :NationalHistoryMuseumTirana ;
+                       :locatedIn :Tirana ;
+                       :originatedFrom :Date_18thCentury ;
+                       :hasCreator "\"Ottoman\"" ;
+                       :hasCulturalContext "\"used by local fighters during Ottoman rule in Albania\"" ;
+                       :hasCulturalHeritageStatus "\"historic firearm of Albanian resistance\"" ;
+                       :hasCulturalSignificance "\"weapon used in uprisings against Ottoman Empire\"" ;
+                       :hasDateOfDiscovery "\"1975\"" ;
+                       :hasMaterial "\"steel and wood\"" ;
+                       :hasName "\"Ottoman Flintlock Rifle used in Albania\"" ;
+                       :hasPeriodOfUse "\"18th–19th century\"" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/PanathenaicAmphoraApollonia
+:PanathenaicAmphoraApollonia rdf:type owl:NamedIndividual ,
+                                      :Pottery ;
+                             :exhibitedIn :NationalHistoryMuseumTirana ;
+                             :isPartOf :ApolloniaUNESCOSite ;
+                             :locatedIn :FierReigon ;
+                             :originatedFrom :Date_Mid6thCenturyBC ;
+                             :hasCulturalContext "\"Greek colonial period (Apollonia)\"" ;
+                             :hasCulturalHeritageStatus "\"Museum-preserved heritage object\"" ;
+                             :hasCulturalSignificance "\"ceremonial Greek artifact\"" ;
+                             :hasMaterial "\"ceramic\"" ;
+                             :hasName "\"Ceramic Panathenaic Black-Figured Amphora\"" ;
+                             :hasPeriodOfUse "\"mid-6th – 2nd century BC\"" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/RomanExpansionIntollyria
+:RomanExpansionIntollyria rdf:type owl:NamedIndividual ,
+                                   :HistoricEvent .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/RomanProvinceFormation
+:RomanProvinceFormation rdf:type owl:NamedIndividual ,
+                                 :HistoricEvent .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/SaintMaryWithJesusIcon
+:SaintMaryWithJesusIcon rdf:type owl:NamedIndividual ,
+                                 :VisualArtwork ;
+                        :exhibitedIn :OnufriIconographicMuseum ;
+                        :isPartOf :BeratUNESCOSite ;
+                        :locatedIn :Berat ;
+                        :originatedFrom :Date_16thCentury ;
+                        :hasCreator "\"Onufri\"" ;
+                        :hasCulturalContext "\"Byzantine iconography in post-Byzantine Albania\"" ;
+                        :hasCulturalHeritageStatus "\"national religious artwork\"" ;
+                        :hasCulturalSignificance "\"religious icon used in Orthodox Christian worship\"" ;
+                        :hasDateOfDiscovery "\"1980\"" ;
+                        :hasMaterial "\"wood and tempera\"" ;
+                        :hasName "\"Saint Mary with Jesus\"" ;
+                        :hasPeriodOfUse "\"16-th century\"" .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/SarandaRegion
+:SarandaRegion rdf:type owl:NamedIndividual ,
+                        :Region .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/SkanderbegResistance
+:SkanderbegResistance rdf:type owl:NamedIndividual ,
+                               :HistoricEvent .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/Tirana
+:Tirana rdf:type owl:NamedIndividual ,
+                 :City .
+
+
+###  http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/VloraRegion
+:VloraRegion rdf:type owl:NamedIndividual ,
+                      :Region .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AncientCity
+                :CastleOrFortress
+                :RockArtOrInscription
+                :TombOrBurialMound
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :ArchaeologyMuseum
+                :ArtMuseum
+                :CulturalMuseum
+                :HistoricalMuseum
+                :ThematicMuseum
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :ArchitecturalMonument
+                :Memorial
+                :Statue
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CatholicChurch
+                :Monastery
+                :Mosque
+                :OrthodoxChurch
+                :PilgrimageSite
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CulturalFestival
+                :FolkDance
+                :FolkMusic
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Jewelry
+                :Manuscript
+                :Pottery
+                :VisualArtwork
+                :Weapon
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
+
+@prefix : <http://www.semanticweb.org/ana/ontologies/2025/4/untitled-ontology-8/>  .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+:TheOrthodoxChurch rdf:type :OrthodoxChurch ;
+    :hasName "The Orthodox Church" ;
+    :hasReligion "Orthodox Christianity" ;
+    :locatedIn :Voskopoja .
+
+:thecity rdf:type :AncientCity ;
+    :hasName "the city" ;
+    :locatedIn :Voskopoja .
+
+:TheCastle rdf:type :CastleOrFortress ;
+    :hasName "The Castle" ;
+    :hasCulturalContext "Medieval Period" .
+
+:amedievalfortress rdf:type :CastleOrFortress ;
+    :hasName "a medieval fortress" ;
+    :hasCulturalContext "Medieval Period" .
+
+:thesoutherncity rdf:type :AncientCity ;
+    :hasName "the southern city" ;
+    :hasCulturalContext "Medieval Period" .
+
+:thecastle rdf:type :CastleOrFortress ;
+    :hasName "the castle" ;
+    :hasCulturalContext "Byzantine Period" ;
+    :locatedIn :Tepelena .
+
+:theAlbanianNationalAwakening rdf:type :HistoricEvent ;
+    :hasName "the Albanian National Awakening" .
+
+:Themosque rdf:type :Mosque ;
+    :hasName "The mosque" ;
+    :hasCreator "Molla Bey And Completed By His Son Haxhi Et'Hem Bey" .
+
+:Theruins rdf:type :AncientCity ;
+    :hasName "The ruins" ;
+    :locatedIn :Albania .
+
+:theancientcity rdf:type :AncientCity ;
+    :hasName "the ancient city" ;
+    :locatedIn :Albania .
+
+:aRomancity rdf:type :AncientCity ;
+    :hasName "a Roman city" ;
+    :hasCulturalContext "Byzantine Period" .
+
+:Thecity rdf:type :AncientCity ;
+    :hasName "The city" ;
+    :hasCulturalContext "Roman Period" .
+
+:Voskopoja rdf:type :City ;
+    :hasName "Voskopoja" ;
+    :hasLocationType "City" .
+
+:the18thcentury rdf:type :Date ;
+    :hasLabelDate "the 18th century" .
+
+:theOttomanEmpire rdf:type :City ;
+    :hasName "the Ottoman Empire" ;
+    :hasLocationType "City" .
+
+:Albania rdf:type :City ;
+    :hasName "Albania" ;
+    :hasLocationType "City" .
+
+:the12thcentury rdf:type :Date ;
+    :hasLabelDate "the 12th century" .
+
+:the19thcentury rdf:type :Date ;
+    :hasLabelDate "the 19th century" .
+
+:Tepelena rdf:type :City ;
+    :hasName "Tepelena" ;
+    :hasLocationType "City" .
+
+:19th-century rdf:type :Date ;
+    :hasLabelDate "19th-century" .
+
+:Tirana rdf:type :City ;
+    :hasName "Tirana" ;
+    :hasLocationType "City" .
+
+:theearly19thcentury rdf:type :Date ;
+    :hasLabelDate "the early 19th century" .
+
+:Albania rdf:type :City ;
+    :hasName "Albania" ;
+    :hasLocationType "City" .
+
+:Butrint rdf:type :City ;
+    :hasName "Butrint" ;
+    :hasLocationType "City" .
+
+:Albania rdf:type :City ;
+    :hasName "Albania" ;
+    :hasLocationType "City" .
+
+:the7thcentury rdf:type :Date ;
+    :hasLabelDate "the 7th century" .
+
+:the1920s rdf:type :Date ;
+    :hasLabelDate "the 1920s" .
+
+:1992 rdf:type :Date ;
+    :hasExactDate "1992-05-25" ;
+    :hasLabelDate "1992" .
+
