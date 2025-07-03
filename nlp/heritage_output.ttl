@@ -1,0 +1,71 @@
+@prefix : <http://example.org/heritage#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+:The_Orthodox_Church rdf:type :OrthodoxChurch ;
+    :hasName "The Orthodox Church" ;
+    :locatedIn :Albania .
+
+:the_city rdf:type :AncientCity ;
+    :hasName "the city" ;
+    :locatedIn :Albania .
+
+:The_Castle rdf:type :CastleOrFortress ;
+    :hasName "The Castle" ;
+    :locatedIn :Albania .
+
+:a_medieval_fortress rdf:type :CastleOrFortress ;
+    :hasName "a medieval fortress" ;
+    :locatedIn :Albania .
+
+:the_southern_city rdf:type :AncientCity ;
+    :hasName "the southern city" ;
+    :locatedIn :Albania .
+
+:the_Albanian_National_Awakening rdf:type :HistoricEvent ;
+    :hasName "the Albanian National Awakening" .
+
+:The_Et'hem_Bey_Mosque rdf:type :Mosque ;
+    :hasName "The Et'hem Bey Mosque" ;
+    :locatedIn :Albania .
+
+:The_ruins rdf:type :AncientCity ;
+    :hasName "The ruins" ;
+    :locatedIn :Albania .
+
+:the_ancient_city rdf:type :AncientCity ;
+    :hasName "the ancient city" ;
+    :locatedIn :Albania .
+
+:later_a_Roman_city rdf:type :AncientCity ;
+    :hasName "later a Roman city" ;
+    :locatedIn :Albania .
+
+:Voskopoja rdf:type :City ;
+    :hasName "Voskopoja" ;
+    :hasLocationType "City" .
+
+:the_18th_century rdf:type :Date ;
+    :hasLabelDate "the 18th century" .
+
+:the_12th_century rdf:type :Date ;
+    :hasLabelDate "the 12th century" .
+
+:Albania rdf:type :City ;
+    :hasName "Albania" ;
+    :hasLocationType "City" .
+
+:the_early_19th_century rdf:type :Date ;
+    :hasLabelDate "the early 19th century" .
+
+:Tirana rdf:type :City ;
+    :hasName "Tirana" ;
+    :hasLocationType "City" .
+
+:Butrint rdf:type :City ;
+    :hasName "Butrint" ;
+    :hasLocationType "City" .
+
+:Albania rdf:type :City ;
+    :hasName "Albania" ;
+    :hasLocationType "City" .
+
