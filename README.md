@@ -88,11 +88,13 @@ python merge.py          # Merge new individuals into the ontology
 ---
 
 ## Requirements
+## 🛠 Tools Used
 
+- [Protégé](https://protege.stanford.edu/) – for building and editing the ontology (.owl/.rdf/.ttl)
 - Python 3.8+
-- [`spaCy`](https://spacy.io/)
-- [`rdflib`](https://rdflib.readthedocs.io/) for working with RDF in Python
-
+  - `spaCy` – for NLP processing
+  - `rdflib` – for RDF file manipulation
+- Apache Jena Fuseki – for serving the ontology via SPARQL
 Install dependencies:
 ```bash
 pip install spacy rdflib
